@@ -1,0 +1,10 @@
+.smallImg {
+    width: 200px;
+    height: auto;
+  }
+  .thumbNailDiv {
+    width: 220px;
+    border: 1px solid black;
+    margin: 0 auto;
+    text-align: center;
+  }
