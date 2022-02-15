@@ -1,5 +1,5 @@
 import './App.css';
-import ArtWorkThumbNail from './component/ArtworkThumbnail';
+import ArtworkThumbnail from './component/ArtworkThumbnail';
 import Header from './component/Header';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <ArtWorkThumbNail />
+      <ArtworkThumbnail />
     </div>
   );
 }
