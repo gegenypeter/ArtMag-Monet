@@ -1,12 +1,7 @@
+import axios from "axios";
+import { data } from "./sample artworks/sampleData";
 
-export const = () => {
-	
-}
-
-let result = {
-	objectID: "",
-	images: [small, big],
-	title: "",
-	artistName: "",
-	yearOfCreation: ""
+export const getArtworks = async () => {
+	console.log(data);
+	return await data;	
 }
