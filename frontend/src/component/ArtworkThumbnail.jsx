@@ -5,7 +5,7 @@ import "./ThumbNail.css"
 const datas = [
     {
       objectID: 1,
-      title: 'elso',
+      title: 'elsoo',
       artistDisplayName: "Vincent Van Gogh",
       primaryIMG: "https://images.metmuseum.org/CRDImages/ad/original/144703.jpg",
       smallIMG: "https://images.metmuseum.org/CRDImages/ad/web-large/144703.jpg"
