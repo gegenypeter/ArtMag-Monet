@@ -9,30 +9,49 @@ import Search from './component/SearchComponent';
 
 function App() {
 
-  const [artworks, setArtworks] = useState([]);
+  const [artworkList, setArtworkList] = useState([]);
   const [canLoadMore, setCanLoadMore] = useState(false);
+  const [page, setPage] = useState(1);
 
   const loadArtworks = async () => {
-   const {artworks, hasMorePage} = await getArtworksData(10, 3);
-    setArtworks(artworks);
-    setCanLoadMore(hasMorePage)
+    const {artworks, hasMorePage} = await getArtworksData(20, page);
+    setArtworkList([...artworkList, ...artworks]);
+    setCanLoadMore(hasMorePage);
+  }
+
+  const showMore = () => {
+    setPage(page + 1);
+    // loadArtworks();
   }
 
   useEffect( () => {
     loadArtworks()
-  }, []);
+  }, [page]);
 
+  // const showArtwork = (event) => {
+  //   return (
+  //     <Artwork id={event.target.id}/>
+  //   )
+  // }
 
   return (
     <div className="App">
       <Header />
       <Search />
       <div className='container'>
-      {artworks.map(art => 
-          <ArtworkThumbnail key={art.id} id={art.id} title={art.title} artistName={art.artist} image={art.image} onClick={() => <Artwork id={art.id}/>}/>
-      )}
+        {artworkList.map(art => 
+            <ArtworkThumbnail
+              key={art.id}
+              id={art.id}
+              title={art.title}
+              artistName={art.artist}
+              image={art.image}
+              // onClick={showArtwork}
+            />
+        )}
       </div>
-      <Footer />
+      {canLoadMore ? (<button onClick={showMore}>Show more artwork</button>) : ""}
+      <Footer/>
     </div>
   );
 }

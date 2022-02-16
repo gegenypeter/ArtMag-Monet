@@ -43,6 +43,8 @@ import axios from "axios";
 const apiSearchURL = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=monet"
 const apiObjectURL = "https://collectionapi.metmuseum.org/public/collection/v1/objects/";
 
+let dataSummary;
+
 export const getArtworkData = async (objectID, detailed = true) => {
 	const {data: artworkData} = await axios.get(apiObjectURL + objectID.toString());
 	let result;
@@ -80,7 +82,11 @@ export const getArtworkData = async (objectID, detailed = true) => {
 
 export const getArtworksData = async (itemsPerPage, page) => {
 	const resultData = [];
-	const {data: {objectIDs, total}} = await axios.get(apiSearchURL);
+	if (!dataSummary) {
+		const {data} = await axios.get(apiSearchURL);
+		dataSummary = data;
+	}
+	const {objectIDs, total} = dataSummary;
 	const firstItem = (page - 1) * itemsPerPage;
 	const lastItem = firstItem + itemsPerPage;
 	const objectIDsPage = objectIDs.slice(firstItem, lastItem);
