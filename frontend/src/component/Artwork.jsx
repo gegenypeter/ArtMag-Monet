@@ -3,13 +3,14 @@ import { getArtworkData } from "../api/apiProvider";
 
 function Artwork(props) {
 
-	const {key: id} = props;
+	const {id} = props;
 
 	const [artwork, setArtwork] = useState([]);
 
 	const loadArtwork = async () => {
 		const data = await getArtworkData(id);
 		setArtwork(data);
+		console.log(data)
 	}
 
 	useEffect(() => {

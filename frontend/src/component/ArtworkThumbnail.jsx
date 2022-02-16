@@ -9,8 +9,8 @@ const artworkThumbnail = (props) => {
   const {id, title, image ,artistName} = props;
 
   return (
-    <>
-      <img className="smallImg" alt={title} src={image} onClick={() => <Artwork id={id}/>} />
+    <div className='thumbNailDiv' key={id}>
+      <img className="smallImg" alt={title} src={image}/>
       <div className="contentDiv">
         <p className="artWorkTitle"> {title} </p>
         <p className="artistName">Artist: {artistName}</p>
@@ -18,7 +18,7 @@ const artworkThumbnail = (props) => {
        <div className="btnDiv">
         <button className="save">Save</button>
       </div>
-    </>
+    </div>
   );
 };
 
