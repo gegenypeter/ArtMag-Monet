@@ -13,7 +13,6 @@ function App() {
 
   const loadArtworks = async () => {
    const {artworks, hasMorePage} = await getArtworksData(20, 1);
-   console.log(artworks)
     setArtworks(artworks);
     setCanLoadMore(hasMorePage)
   }
@@ -31,7 +30,7 @@ function App() {
       <div className='container'>
       {artworks.map(art => 
         <div className='thumbNailDiv' key={art.id}>
-          <ArtworkThumbnail title={art.title} artistDisplayName={art.artist} smallIMG={art.image}/>
+          <ArtworkThumbnail id={art.id} title={art.title} artistName={art.artist} image={art.image}/>
         </div>
       )}
       </div>

@@ -1,15 +1,19 @@
 import React from "react";
 import "../styles/ThumbNail.css";
+import Artwork from "./Artwork";
 
 // Ez egyetlen ArtworTthumbnail legyen inkább és az App.js-be legyen map-elve /Laci/
 
-const artWorkThumbNail = (props) => {
+const artworkThumbnail = (props) => {
+
+  const {id, title, image ,artistName} = props;
+
   return (
     <>
-      <img className="smallImg" alt={props.title} src={props.smallIMG} />
+      <img className="smallImg" alt={title} src={image} onClick={() => <Artwork id={id}/>} />
       <div className="contentDiv">
-        <p className="artWorkTitle"> {props.title} </p>
-        <p className="artistName">Artist: {props.artistDisplayName}</p>
+        <p className="artWorkTitle"> {title} </p>
+        <p className="artistName">Artist: {artistName}</p>
       </div>
        <div className="btnDiv">
         <button className="save">Save</button>
@@ -18,4 +22,4 @@ const artWorkThumbNail = (props) => {
   );
 };
 
-export default artWorkThumbNail;
+export default artworkThumbnail;
