@@ -45,16 +45,6 @@ function App() {
           <ArtworkThumbnail title={art.title} artistDisplayName={art.artistDisplayName} smallIMG={art.smallIMG}/>
         </div>
       )}
-      {datas.map(art => 
-        <div key={art.objectID}>
-          <ArtworkThumbnail title={art.title} artistDisplayName={art.artistDisplayName} smallIMG={art.smallIMG}/>
-        </div>
-      )}
-      {datas.map(art => 
-        <div key={art.objectID}>
-          <ArtworkThumbnail title={art.title} artistDisplayName={art.artistDisplayName} smallIMG={art.smallIMG}/>
-        </div>
-      )}
       </div>
       <Footer />
     </div>
