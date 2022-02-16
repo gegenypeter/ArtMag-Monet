@@ -80,8 +80,7 @@ export const getArtworkData = async (objectID, detailed = true) => {
 	return result;
 }
 
-export const getArtworksData = async (itemsPerPage, page) => {
-	const resultData = [];
+export const getNextArtworkData = async (index, itemsPerPage, page) => {
 	if (!dataSummary) {
 		const {data} = await axios.get(apiSearchURL);
 		dataSummary = data;
@@ -91,12 +90,9 @@ export const getArtworksData = async (itemsPerPage, page) => {
 	const lastItem = firstItem + itemsPerPage;
 	const objectIDsPage = objectIDs.slice(firstItem, lastItem);
 	const resultHasMorePage = (lastItem <= total);
-	for (const objectID of objectIDsPage) {
-		const objectData = await getArtworkData(objectID, false);
-		resultData.push(objectData);
-	}
+	const objectData = await getArtworkData(objectIDsPage[index], false);
 	const result = {
-		artworks: resultData,
+		artwork: {...objectData},
 		hasMorePage: resultHasMorePage
 	}
 	return result;

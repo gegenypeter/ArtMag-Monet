@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
-import { getArtworksData } from './api/apiProvider';
+import { getNextArtworkData } from './api/apiProvider';
 import './App.css';
 import Artwork from './component/Artwork';
 import ArtworkThumbnail from './component/ArtworkThumbnail';
 import Footer from './component/Footer';
 import Header from './component/Header';
 import Search from './component/SearchComponent';
+
+const itemsPerPage = 20;
 
 function App() {
 
@@ -14,9 +16,14 @@ function App() {
   const [page, setPage] = useState(1);
 
   const loadArtworks = async () => {
-    const {artworks, hasMorePage} = await getArtworksData(20, page);
-    setArtworkList([...artworkList, ...artworks]);
-    setCanLoadMore(hasMorePage);
+    for (let i = 0; i < itemsPerPage; i++) {
+      const {artwork: nextArtwork, hasMorePage} = await getNextArtworkData(i, itemsPerPage, page);
+      // debugger
+      const newList = [...artworkList];
+      newList.push({...nextArtwork});
+      setArtworkList(newList);
+      setCanLoadMore(hasMorePage);
+    }
   }
 
   const showMore = () => {
