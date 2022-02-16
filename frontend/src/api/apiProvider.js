@@ -93,6 +93,5 @@ export const getArtworksData = async (itemsPerPage, page) => {
 		artworks: resultData,
 		hasMorePage: resultHasMorePage
 	}
-	console.log(result);
 	return result;
 }

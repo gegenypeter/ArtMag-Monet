@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getArtworksData } from './api/apiProvider';
 import './App.css';
+import Artwork from './component/Artwork';
 import ArtworkThumbnail from './component/ArtworkThumbnail';
 import Footer from './component/Footer';
 import Header from './component/Header';
@@ -12,8 +13,7 @@ function App() {
   const [canLoadMore, setCanLoadMore] = useState(false);
 
   const loadArtworks = async () => {
-   const {artworks, hasMorePage} = await getArtworksData(20, 1);
-   console.log(artworks)
+   const {artworks, hasMorePage} = await getArtworksData(10, 3);
     setArtworks(artworks);
     setCanLoadMore(hasMorePage)
   }
@@ -29,9 +29,7 @@ function App() {
       <Search />
       <div className='container'>
       {artworks.map(art => 
-        <div className='thumbNailDiv' key={art.id}>
-          <ArtworkThumbnail title={art.title} artistDisplayName={art.artist} smallIMG={art.image}/>
-        </div>
+          <ArtworkThumbnail key={art.id} id={art.id} title={art.title} artistName={art.artist} image={art.image} onClick={() => <Artwork id={art.id}/>}/>
       )}
       </div>
       <Footer />
