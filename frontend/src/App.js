@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import { getArtworks } from './api/apiProvider';
 import './App.css';
 import ArtworkThumbnail from './component/ArtworkThumbnail';
+import Footer from './component/Footer';
 import Header from './component/Header';
 import Sample from './component/Sample';
+import Search from './component/SearchComponent';
 
 function App() {
 
@@ -35,12 +37,26 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <Search />
 	  	<Sample/>
+      <div className='container'>
       {datas.map(art => 
         <div key={art.objectID}>
           <ArtworkThumbnail title={art.title} artistDisplayName={art.artistDisplayName} smallIMG={art.smallIMG}/>
         </div>
       )}
+      {datas.map(art => 
+        <div key={art.objectID}>
+          <ArtworkThumbnail title={art.title} artistDisplayName={art.artistDisplayName} smallIMG={art.smallIMG}/>
+        </div>
+      )}
+      {datas.map(art => 
+        <div key={art.objectID}>
+          <ArtworkThumbnail title={art.title} artistDisplayName={art.artistDisplayName} smallIMG={art.smallIMG}/>
+        </div>
+      )}
+      </div>
+      <Footer />
     </div>
   );
 }
