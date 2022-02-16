@@ -12,8 +12,8 @@ import "../styles/ThumbNail.css"
                 <img className="smallImg" alt={props.title} src={props.smallIMG}/>
                 <p className="artWorkTitle">Title: {props.title} </p>
                 <p className="artistName">Artist: {props.artistDisplayName}</p>
+                <button className="save">Save</button>
             </div>
-              )
           </>
       )
   };
