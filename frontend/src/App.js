@@ -38,7 +38,7 @@ function App() {
     <div className="App">
       <Header />
       <Search />
-	  	<Sample/>
+	  	{/* <Sample/> */}
       <div className='container'>
       {datas.map(art => 
         <div key={art.objectID}>

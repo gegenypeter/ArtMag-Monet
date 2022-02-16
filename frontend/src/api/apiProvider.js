@@ -1,5 +1,4 @@
 import axios from "axios";
-import { data } from "./sampleArtworks/sampleData";
 
 const apiSearchURL = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=monet"
 const apiObjectURL = "https://collectionapi.metmuseum.org/public/collection/v1/objects/";
@@ -56,7 +55,4 @@ export const getArtworksData = async (itemsPerPage = 20, page = 1) => {
 	}
 	console.log(result);
 	return result;
-
-	// console.log(data);
-	// return await data;	
 }
