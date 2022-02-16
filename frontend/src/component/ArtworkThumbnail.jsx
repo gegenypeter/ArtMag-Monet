@@ -1,5 +1,5 @@
 import React from "react";
-import "./ThumbNail.css"
+import "../styles/ThumbNail.css"
 
 
   
