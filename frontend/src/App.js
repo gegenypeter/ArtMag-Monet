@@ -11,33 +11,19 @@ const itemsPerPage = 20;
 
 function App() {
 
-  const [artworkList, setArtworkList] = useState([]);
+  const [artworks, setArtworks] = useState([]);
   const [canLoadMore, setCanLoadMore] = useState(false);
-  const [page, setPage] = useState(1);
 
   const loadArtworks = async () => {
-    for (let i = 0; i < itemsPerPage; i++) {
-      const {artwork, hasMorePage} = await getNextArtworkData(i, itemsPerPage, page);
-      // debugger
-      setArtworkList([...artworkList].push({...artwork}));
-      setCanLoadMore(hasMorePage);
-    }
-  }
-
-  const showMore = () => {
-    setPage(page + 1);
-    // loadArtworks();
+   const {artworks, hasMorePage} = await getArtworksData(10, 3);
+    setArtworks(artworks);
+    setCanLoadMore(hasMorePage)
   }
 
   useEffect( () => {
     loadArtworks()
-  }, [page]);
+  }, []);
 
-  // const showArtwork = (event) => {
-  //   return (
-  //     <Artwork id={event.target.id}/>
-  //   )
-  // }
 
   return (
     <div className="App">
@@ -55,8 +41,7 @@ function App() {
             />
         )}
       </div>
-      {canLoadMore ? (<button onClick={showMore}>Show more artwork</button>) : ""}
-      <Footer/>
+      <Footer />
     </div>
   );
 }

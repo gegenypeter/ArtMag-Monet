@@ -11,6 +11,7 @@ function Artwork(props) {
 	const loadArtwork = async () => {
 		const data = await getArtworkData(id);
 		setArtwork(data);
+		console.log(data)
 	}
 
 	useEffect(() => {
