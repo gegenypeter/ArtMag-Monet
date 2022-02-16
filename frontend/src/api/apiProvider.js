@@ -1,9 +1,49 @@
+/**
+ * 
+ * getArtworksData(itemsPerPage, pageNumber)
+	visszaadott object
+	{
+		artworks:
+		[
+			{
+				id
+				title
+				artist
+				image //kicsi kép
+			}
+		]
+		hasMorePage //true vagy false, arra való, hgy tudjuk van-e még több kép egy LoadMore gombhoz
+	}
+
+ */
+
+// getArtworkData(artworkID)
+/**
+ * 			id
+			title
+			period
+			artist
+			{
+				name
+				born
+				died
+				more // link a művész wikipédia cikkére
+			},
+			dimensions
+			creationYear
+			city
+			country
+			rights // jogtulajdonos
+			image // nagy kép
+ * 
+ */
+
 import axios from "axios";
 
 const apiSearchURL = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=monet"
 const apiObjectURL = "https://collectionapi.metmuseum.org/public/collection/v1/objects/";
 
-export const getArtworkData = async (objectID, detailed = false) => {
+export const getArtworkData = async (objectID, detailed = true) => {
 	const {data: artworkData} = await axios.get(apiObjectURL + objectID.toString());
 	let result;
 	if (detailed) {
