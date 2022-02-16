@@ -78,7 +78,7 @@ export const getArtworkData = async (objectID, detailed = true) => {
 	return result;
 }
 
-export const getArtworksData = async (itemsPerPage = 20, page = 1) => {
+export const getArtworksData = async (itemsPerPage, page) => {
 	const resultData = [];
 	const {data: {objectIDs, total}} = await axios.get(apiSearchURL);
 	const firstItem = (page - 1) * itemsPerPage;
