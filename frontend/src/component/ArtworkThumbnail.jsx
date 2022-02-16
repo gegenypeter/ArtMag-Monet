@@ -26,6 +26,8 @@ const datas = [
     },
   ]
   
+  // Ez egyetlen thunmnail legyen inkább és az App.js-be legyen map-elve /Laci/
+  
   const artWorkThumbNail = () => {
       return (
           <>
