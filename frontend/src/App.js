@@ -27,7 +27,6 @@ function App() {
     <div className="App">
       <Header />
       <Search />
-	  	{/* <Sample/> */}
       <div className='container'>
       {artworks.map(art => 
         <div className='thumbNailDiv' key={art.id}>
@@ -35,7 +34,6 @@ function App() {
         </div>
       )}
       </div>
-      {}
       <Footer />
     </div>
   );

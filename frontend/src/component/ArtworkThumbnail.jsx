@@ -11,7 +11,7 @@ const artWorkThumbNail = (props) => {
         <p className="artWorkTitle"> {props.title} </p>
         <p className="artistName">Artist: {props.artistDisplayName}</p>
       </div>
-       <div className="btnDiv">
+      <div className="btnDiv">
         <button className="save">Save</button>
       </div>
     </>
