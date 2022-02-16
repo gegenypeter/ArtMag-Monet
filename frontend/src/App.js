@@ -7,11 +7,40 @@ import Sample from './component/Sample';
 
 function App() {
 
+  const datas = [
+    {
+      objectID: 1,
+      title: 'elsoo',
+      artistDisplayName: "Vincent Van Gogh",
+      primaryIMG: "https://images.metmuseum.org/CRDImages/ad/original/144703.jpg",
+      smallIMG: "https://images.metmuseum.org/CRDImages/ad/web-large/144703.jpg"
+    },
+    {
+      objectID: 2,
+      title: 'masodik',
+      artistDisplayName: "Csokonai",
+      primaryIMG: "https://images.metmuseum.org/CRDImages/ad/original/144703.jpg",
+      smallIMG: "https://images.metmuseum.org/CRDImages/ad/web-large/144703.jpg"
+    },
+    {
+      objectID: 3,
+      title: 'harmadik',
+      artistDisplayName: "Mr festő",
+      primaryIMG: "https://images.metmuseum.org/CRDImages/ad/original/144703.jpg",
+      smallIMG: "https://images.metmuseum.org/CRDImages/ad/web-large/144703.jpg"
+    },
+  ]
+
+
   return (
     <div className="App">
       <Header />
 	  	<Sample/>
-		<ArtworkThumbnail/>
+      {datas.map(art => 
+        <div key={art.objectID}>
+          <ArtworkThumbnail title={art.title} artistDisplayName={art.artistDisplayName} smallIMG={art.smallIMG}/>
+        </div>
+      )}
     </div>
   );
 }

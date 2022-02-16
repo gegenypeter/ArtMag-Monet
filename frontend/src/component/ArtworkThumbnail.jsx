@@ -1,44 +1,19 @@
 import React from "react";
-import "./ThumbNail.css"
+import "../styles/ThumbNail.css"
 
 
-const datas = [
-    {
-      objectID: 1,
-      title: 'elsoo',
-      artistDisplayName: "Vincent Van Gogh",
-      primaryIMG: "https://images.metmuseum.org/CRDImages/ad/original/144703.jpg",
-      smallIMG: "https://images.metmuseum.org/CRDImages/ad/web-large/144703.jpg"
-    },
-    {
-      objectID: 2,
-      title: 'masodik',
-      artistDisplayName: "Csokonai",
-      primaryIMG: "https://images.metmuseum.org/CRDImages/ad/original/144703.jpg",
-      smallIMG: "https://images.metmuseum.org/CRDImages/ad/web-large/144703.jpg"
-    },
-    {
-      objectID: 3,
-      title: 'harmadik',
-      artistDisplayName: "Mr festő",
-      primaryIMG: "https://images.metmuseum.org/CRDImages/ad/original/144703.jpg",
-      smallIMG: "https://images.metmuseum.org/CRDImages/ad/web-large/144703.jpg"
-    },
-  ]
   
   // Ez egyetlen ArtworTthumbnail legyen inkább és az App.js-be legyen map-elve /Laci/
   
-  const artWorkThumbNail = () => {
+  const artWorkThumbNail = (props) => {
       return (
           <>
-              {datas.map(art => 
-                  <div className="thumbNailDiv" key={art.objectID}>
-                      <img className="smallImg" alt={art.title} src={art.smallIMG}/>
-                      <p className="artWorkTitle">Title: {art.title} </p>
-                      <p className="artistName">Artist: {art.artistDisplayName}</p>
-                  </div>
+            <div className="thumbNailDiv">
+                <img className="smallImg" alt={props.title} src={props.smallIMG}/>
+                <p className="artWorkTitle">Title: {props.title} </p>
+                <p className="artistName">Artist: {props.artistDisplayName}</p>
+            </div>
               )
-              }
           </>
       )
   };
