@@ -89,11 +89,10 @@ export const getNextArtworkData = async (index, itemsPerPage, page) => {
 	const firstItem = (page - 1) * itemsPerPage;
 	const lastItem = firstItem + itemsPerPage;
 	const objectIDsPage = objectIDs.slice(firstItem, lastItem);
-	const resultHasMorePage = (lastItem <= total);
 	const objectData = await getArtworkData(objectIDsPage[index], false);
 	const result = {
-		artwork: {...objectData},
-		hasMorePage: resultHasMorePage
+		artwork: {objectData},
+		hasMorePage: (lastItem <= total)
 	}
-	return result;
+	return {...result};
 }

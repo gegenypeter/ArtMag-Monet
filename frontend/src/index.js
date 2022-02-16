@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Artwork from './routes/Artwork'
+import ArtworkPage from './routes/ArtworkPage'
 import Collection from './routes/Collection'
 import Login from './routes/Login'
 import Register from './routes/Register'
@@ -14,7 +14,7 @@ ReactDOM.render(
       <Route path="/" element={<App />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/artwork" element={<Artwork />} /> 
+      <Route path="/artwork" element={<ArtworkPage />} /> 
       <Route path="/collection" element={<Collection />} />   
      </Routes>
   </BrowserRouter>,

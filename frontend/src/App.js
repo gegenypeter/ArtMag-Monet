@@ -17,11 +17,9 @@ function App() {
 
   const loadArtworks = async () => {
     for (let i = 0; i < itemsPerPage; i++) {
-      const {artwork: nextArtwork, hasMorePage} = await getNextArtworkData(i, itemsPerPage, page);
+      const {artwork, hasMorePage} = await getNextArtworkData(i, itemsPerPage, page);
       // debugger
-      const newList = [...artworkList];
-      newList.push({...nextArtwork});
-      setArtworkList(newList);
+      setArtworkList([...artworkList].push({...artwork}));
       setCanLoadMore(hasMorePage);
     }
   }
@@ -46,13 +44,13 @@ function App() {
       <Header />
       <Search />
       <div className='container'>
-        {artworkList.map(art => 
+        {artworkList.map(({id, title, artist, image}) => 
             <ArtworkThumbnail
-              key={art.id}
-              id={art.id}
-              title={art.title}
-              artistName={art.artist}
-              image={art.image}
+              key={id}
+              id={id}
+              title={title}
+              artistName={artist}
+              image={image}
               // onClick={showArtwork}
             />
         )}
