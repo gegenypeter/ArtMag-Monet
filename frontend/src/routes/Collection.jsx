@@ -1,14 +1,17 @@
-import React from 'react'
-import Footer from '../component/Footer'
+import React, { useState } from "react";
+import Footer from "../component/Footer";
+import axios from "axios";
+import demo from "./test";
 
-const Collection = () => {
-    return (
-        <>
-            <div>Collection</div>
-            <Footer />
-        </>
-    )
+const Collection = async () => {
 
-}
+  return (
+    <>
+      <h1>Your collection</h1>
+      {demo}
+      <Footer />
+    </>
+  );
+};
 
-export default Collection
+export default Collection;

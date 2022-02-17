@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/ThumbNail.css";
 import Artwork from "./Artwork";
+import { SaveArtwork } from "./SaveRequest";
 
 // Ez egyetlen ArtworTthumbnail legyen inkább és az App.js-be legyen map-elve /Laci/
 
@@ -19,7 +20,7 @@ const artworkThumbnail = (props) => {
         <p className="artistName" key={`p2${id}`}>Artist: {artistName}</p>
       </div>
       <div className="btnDiv" key={`div2${id}`}>
-        <button className="save" key={`btn${id}`}>Save</button>
+        <button onClick={()=>SaveArtwork(props)} className="save" key={`btn${id}`}>Save</button>
       </div>
     </div>
   );
