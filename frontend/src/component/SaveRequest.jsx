@@ -20,3 +20,4 @@ export const SaveArtwork = async (data) => {
     }
   }
 };
+export default SaveArtwork;
