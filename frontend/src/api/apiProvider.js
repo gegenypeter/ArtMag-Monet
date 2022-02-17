@@ -46,37 +46,42 @@ const apiObjectURL = "https://collectionapi.metmuseum.org/public/collection/v1/o
 let dataSummary;
 
 export const getArtworkData = async (objectID, detailed = true) => {
-	const {data: artworkData} = await axios.get(apiObjectURL + objectID.toString());
+	const {data} = await axios.get(apiObjectURL.concat(objectID));
+	
 	let result;
 	if (detailed) {
 		result =
 		{
 			id: objectID,
-			title: artworkData.title,
-			period: artworkData.period,
+			title: data.title,
+			period: data.period,
 			artist:
 			{
-				name: artworkData.artistDisplayName,
-				born: artworkData.artistBeinDate,
-				died: artworkData.artistEndDate,
-				more: artworkData.artistWikidata_URL
+				name: data.artistDisplayName,
+				born: data.artistBeinDate,
+				died: data.artistEndDate,
+				more: data.artistWikidata_URL
 			},
-			dimensions: artworkData.dimensions,
-			creationYear: artworkData.objectEndDate,
-			city: artworkData.city,
-			country: artworkData.country,
-			rights: artworkData.rightsAndReproduction,
-			image: artworkData.primaryImage
+			dimensions: data.dimensions,
+			creationYear: data.objectEndDate,
+			city: data.city,
+			country: data.country,
+			rights: data.rightsAndReproduction,
+			image: {
+				large: data.primaryImage,
+				small: data.primaryImageSmall
+			}
 		}
 	} else {
 		result =
 		{
 			id: objectID,
-			title: artworkData.title,
-			artist: artworkData.artistDisplayName,
-			image: artworkData.primaryImageSmall
+			title: data.title,
+			artist: data.artistDisplayName,
+			image: data.primaryImageSmall
 		}
 	}
+	// console.log(result);
 	return result;
 }
 

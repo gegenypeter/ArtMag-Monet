@@ -11,11 +11,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 ReactDOM.render(
   <BrowserRouter>
      <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/artwork" element={<ArtworkPage />} /> 
-      <Route path="/collection" element={<Collection />} />   
+      <Route path="/" element={<App/>}/>
+      <Route path="/register" element={<Register/>}/>
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/artwork/*" element={<ArtworkPage/>}/> 
+      <Route path="/collection" element={<Collection/>}/>   
      </Routes>
   </BrowserRouter>,
   document.getElementById('root')

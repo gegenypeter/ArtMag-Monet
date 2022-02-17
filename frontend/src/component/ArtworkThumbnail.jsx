@@ -7,11 +7,11 @@ import Artwork from "./Artwork";
 
 const artworkThumbnail = (props) => {
 
-  const {id, title, image ,artistName} = props;
+  const {id, title, image, artistName} = props;
 
   return (
     <div className='thumbNailDiv' key={id}>
-      <Link to="/artwork">
+      <Link to={`/artwork/${id}`}>
         <img className="smallImg" key={`img${id}`} alt={title} src={image}/>
       </Link>
       <div className="contentDiv" key={`div${id}`}>
