@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../styles/ThumbNail.css";
 import Artwork from "./Artwork";
 
@@ -10,7 +11,9 @@ const artworkThumbnail = (props) => {
 
   return (
     <div className='thumbNailDiv' key={id}>
-      <img className="smallImg" key={`img${id}`} alt={title} src={image}/>
+      <Link to="/artwork">
+        <img className="smallImg" key={`img${id}`} alt={title} src={image}/>
+      </Link>
       <div className="contentDiv" key={`div${id}`}>
         <p className="artWorkTitle" key={`p${id}`}> {title} </p>
         <p className="artistName" key={`p2${id}`}>Artist: {artistName}</p>

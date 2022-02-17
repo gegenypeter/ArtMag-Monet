@@ -10,8 +10,8 @@ function Artwork(props) {
 
 	const loadArtwork = async () => {
 		const data = await getArtworkData(id);
-		setArtwork(data);
 		console.log(data)
+		setArtwork(data);
 	}
 
 	useEffect(() => {
@@ -22,7 +22,7 @@ function Artwork(props) {
 		<div>
 			<img src={artwork.image} alt={artwork.title} />
 			<h1>{artwork.title}</h1>
-			<p>{String.concat(artwork.artist.name, " (", artwork.artist.born, " - ", artwork.artist.died, ")")}</p>
+			<p>{artwork.artist.name.concat(" (", artwork.artist.born, " - ", artwork.artist.died, ")")}</p>
 			<a href={artwork.artist.more}>more...</a>
 			<Footer />
 		</div>
