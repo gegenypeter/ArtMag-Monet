@@ -12,9 +12,12 @@ header {
     align-items: center;
     gap: 15px;
     width: 200px;
-    margin: 100px auto;
-
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
 }
+
 
 input {
     height: 25px;

@@ -5,6 +5,7 @@ const Register = () => {
   return (
     <>
     <form className="registerForm">
+        <h1>Register</h1>
         <input type="email" placeholder="Email" required></input>
         <input type="password" placeholder="Password" required></input>
         <button>Register</button>

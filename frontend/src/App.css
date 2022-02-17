@@ -2,10 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Rufina', serif;
 }
 
 body {
     background: url("../public/background.jpg") no-repeat fixed;
+   
 }
 
 .container {
