@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../styles/Header.css"
 
 
@@ -10,8 +10,8 @@ const Header = () => {
     return (
         <header>
             <div className="buttonDiv">
-                <Link to="/register"> <button>Register</button> </Link>
-                <Link to="/login"> <button>Sign in</button> </Link>
+                <NavLink to="/register"><button>Register</button> </NavLink>
+                <NavLink to="/login"> <button>Sign in</button> </NavLink>
             </div>
      
         </header>
