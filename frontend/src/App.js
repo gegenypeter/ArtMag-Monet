@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getNextArtworkData } from './api/apiProvider';
+import { getArtworksData } from './api/apiProvider';
 import './App.css';
 import Artwork from './component/Artwork';
 import ArtworkThumbnail from './component/ArtworkThumbnail';
@@ -7,22 +7,29 @@ import Footer from './component/Footer';
 import Header from './component/Header';
 import Search from './component/SearchComponent';
 
-const itemsPerPage = 20;
+const itemsPerPage = 8;
 
 function App() {
 
-  const [artworks, setArtworks] = useState([]);
+  const [artworkList, setArtworkList] = useState([]);
   const [canLoadMore, setCanLoadMore] = useState(false);
+  const [page, setPage] = useState(1);
+
 
   const loadArtworks = async () => {
-   const {artworks, hasMorePage} = await getArtworksData(10, 3);
-    setArtworks(artworks);
+    const {artworks, hasMorePage} = await getArtworksData(itemsPerPage, page);
+    setArtworkList([...artworkList, ...artworks]);
     setCanLoadMore(hasMorePage)
+  }
+
+  const showMore = () => {
+    setPage(page + 1);
+    // loadArtworks();
   }
 
   useEffect( () => {
     loadArtworks()
-  }, []);
+  }, [page]);
 
 
   return (
@@ -41,6 +48,7 @@ function App() {
             />
         )}
       </div>
+      {canLoadMore ? (<button onClick={showMore}>Show more artwork</button>) : ""}
       <Footer />
     </div>
   );

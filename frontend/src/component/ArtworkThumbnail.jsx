@@ -10,13 +10,13 @@ const artworkThumbnail = (props) => {
 
   return (
     <div className='thumbNailDiv' key={id}>
-      <img className="smallImg" alt={title} src={image}/>
-      <div className="contentDiv">
-        <p className="artWorkTitle"> {title} </p>
-        <p className="artistName">Artist: {artistName}</p>
+      <img className="smallImg" key={`img${id}`} alt={title} src={image}/>
+      <div className="contentDiv" key={`div${id}`}>
+        <p className="artWorkTitle" key={`p${id}`}> {title} </p>
+        <p className="artistName" key={`p2${id}`}>Artist: {artistName}</p>
       </div>
-      <div className="btnDiv">
-        <button className="save">Save</button>
+      <div className="btnDiv" key={`div2${id}`}>
+        <button className="save" key={`btn${id}`}>Save</button>
       </div>
     </div>
   );
