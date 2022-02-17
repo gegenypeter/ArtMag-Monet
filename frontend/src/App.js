@@ -48,7 +48,7 @@ function App() {
             />
         )}
       </div>
-      {canLoadMore ? (<button onClick={showMore}>Show more artwork</button>) : ""}
+      {canLoadMore ? (<button id='showMore' onClick={showMore}>Show more artwork</button>) : ""}
       <Footer />
     </div>
   );

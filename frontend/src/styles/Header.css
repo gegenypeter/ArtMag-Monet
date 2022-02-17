@@ -3,6 +3,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    margin-top: 1rem;
 }
 
 .loginForm, .registerForm {
@@ -17,4 +18,5 @@ header {
 
 button {
     margin: 10px;
+    width: 80px;
 }

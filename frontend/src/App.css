@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     background: url("../public/background.jpg") no-repeat fixed;
 }
@@ -9,4 +15,15 @@ body {
     gap: 50px;
     max-width: 1100px;
     justify-content: center;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+}
+
+#showMore {
+    width: 150px;
+    margin: 0 auto;
+    
 }
