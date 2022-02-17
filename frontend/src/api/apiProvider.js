@@ -46,7 +46,7 @@ const apiObjectURL = "https://collectionapi.metmuseum.org/public/collection/v1/o
 let dataSummary;
 
 export const getArtworkData = async (objectID, detailed = true) => {
-	const {data} = await axios.get(apiObjectURL.concat(objectID));
+	const {data} = await axios.get(apiObjectURL.concat(objectID.toString()));
 	
 	let result;
 	if (detailed) {
@@ -81,7 +81,6 @@ export const getArtworkData = async (objectID, detailed = true) => {
 			image: data.primaryImageSmall
 		}
 	}
-	// console.log(result);
 	return result;
 }
 
@@ -103,5 +102,5 @@ export const getArtworksData = async (itemsPerPage, page) => {
 		artworks: objectList,
 		hasMorePage: (lastItem <= total)
 	}
-	return {...result};
+	return result;
 }

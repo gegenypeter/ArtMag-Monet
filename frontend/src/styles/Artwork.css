@@ -1,0 +1,42 @@
+.artwork {
+	background: none;
+	background-color: #333;
+	color: #888;
+	display: inline-block;
+	/* box-sizing: border-box; */
+}
+
+.artworkContainer {
+	display: flex;
+	position: absolute;
+	flex-wrap: wrap;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	/* padding: 20px; */
+}
+
+.image {
+	display: inline-block;
+	margin: 50px;
+}
+
+img {
+	width: 50vw;
+}
+
+.details {
+	display: inline-block;
+	margin: 50px;
+}
+
+
+a:visited {
+	color: #ccc
+}
+
+a.more {
+	color: #ccc;
+	text-decoration: none;
+}

@@ -2,37 +2,36 @@
   box-sizing: border-box;
 }
 
-
-
 .smallImg {
     width: 200px;
     margin-top: 10px;
   }
-  .thumbNailDiv {
-    background-color: rgba(0, 0, 0, 0.6);
-    color: rgb(245, 228, 214);
-    width: 220px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
-    height: 500px;
-    border: 1px solid black;
-    margin: 0 auto;
-  }
 
-  .contentDiv {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-  }
+.thumbNailDiv {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: rgb(245, 228, 214);
+  width: 220px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  height: 500px;
+  border: 1px solid black;
+  margin: 0 auto;
+}
 
-  .btnDiv {
-    height: 30px;
-    justify-self:end;
-  } 
+.contentDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
 
-  .save {
-    width: 80px;
-  }
+.btnDiv {
+  height: 30px;
+  justify-self:end;
+} 
+
+.save {
+  width: 80px;
+}

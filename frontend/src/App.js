@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getArtworksData } from './api/apiProvider';
 import './App.css';
-import Artwork from './component/Artwork';
 import ArtworkThumbnail from './component/ArtworkThumbnail';
 import Footer from './component/Footer';
 import Header from './component/Header';
@@ -28,7 +27,7 @@ function App() {
   }
 
   useEffect( () => {
-    loadArtworks()
+    loadArtworks();
   }, [page]);
 
 
