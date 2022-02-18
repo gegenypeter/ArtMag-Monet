@@ -1,0 +1,15 @@
+.thumbnails {
+    margin: 80px auto 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    max-width: 1100px;
+    justify-content: center;
+}
+
+.showMore {
+	display: block;
+    margin: 0 auto;
+    width: 150px;
+	margin-bottom: 100px;
+}

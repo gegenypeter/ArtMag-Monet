@@ -1,56 +1,63 @@
-import { useEffect, useState } from 'react';
-import { getArtworksData } from './api/apiProvider';
+import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import './App.css';
-import ArtworkThumbnail from './component/ArtworkThumbnail';
+
 import Footer from './component/Footer';
 import Header from './component/Header';
 import Search from './component/SearchComponent';
 
-const itemsPerPage = 8;
+import Home from './routes/Home';
+import Artwork from './routes/Artwork'
+import Collection from './routes/Collection'
+import Login from './routes/Login'
+import Register from './routes/Register'
+
 
 function App() {
 
-  const [artworkList, setArtworkList] = useState([]);
-  const [canLoadMore, setCanLoadMore] = useState(false);
-  const [page, setPage] = useState(1);
+	const [artworkList, setArtworkList] = useState([]);
+	const [canLoadMore, setCanLoadMore] = useState(false);
+	const [lastPage, setLastPage] = useState(1);
 
+	return (
 
-  const loadArtworks = async () => {
-    const {artworks, hasMorePage} = await getArtworksData(itemsPerPage, page);
-    setArtworkList([...artworkList, ...artworks]);
-    setCanLoadMore(hasMorePage)
-  }
-
-  const showMore = () => {
-    setPage(page + 1);
-    // loadArtworks();
-  }
-
-  useEffect( () => {
-    loadArtworks();
-  }, [page]);
-
-
-  return (
-    <div className="App">
-      <Header />
-      <Search />
-      <div className='container'>
-        {artworkList.map(({id, title, artist, image}) => 
-            <ArtworkThumbnail
-              key={id}
-              id={id}
-              title={title}
-              artistName={artist}
-              image={image}
-              // onClick={showArtwork}
-            />
-        )}
-      </div>
-      {canLoadMore ? (<button id='showMore' onClick={showMore}>Show more artwork</button>) : ""}
-      <Footer />
-    </div>
-  );
+	<div className="App">
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<>
+					<Header />
+					<Search />
+					<Home
+						lastPage={lastPage}
+						setLastPage={setLastPage}
+						artworkList={artworkList}
+						setArtworkList={setArtworkList}
+						canLoadMore={canLoadMore}
+						setCanLoadMore={setCanLoadMore}
+						/>
+					<Footer />
+				</>}/>
+				<Route path="/register" element={<>
+					<Header />
+					<Register/>
+					<Footer />
+				</>}/>
+				<Route path="/login" element={<>
+					<Header />
+					<Login/>
+					<Footer />
+				</>}/>
+				<Route path="/artwork/:id" element={<Artwork/>}/> 
+				<Route path="/collection" element={<>
+					<Header />
+					<Collection/>
+					<Footer />
+				</>}/>
+			</Routes>
+		</BrowserRouter>,
+	</div>
+	);
 }
 
 export default App;
