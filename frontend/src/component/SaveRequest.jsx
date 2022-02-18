@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const apiSaveURL = "http://localhost:4000/api/save"
+
 export const SaveArtwork = async (data) => {
   console.log(data);
   const newArt = {
@@ -9,7 +11,7 @@ export const SaveArtwork = async (data) => {
     image: data.image,
   };
   try {
-    await axios.post("http://localhost:4000/api/save", newArt);
+    await axios.post(apiSaveURL, newArt);
     alert("Artwork saved!");
   } catch (err) {
     if (!err.response) {
