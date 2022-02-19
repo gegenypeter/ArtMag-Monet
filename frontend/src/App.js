@@ -5,7 +5,6 @@ import './App.css';
 
 import Footer from './component/Footer';
 import Header from './component/Header';
-import Search from './component/SearchComponent';
 
 import Home from './routes/Home';
 import Artwork from './routes/Artwork'
@@ -27,7 +26,6 @@ function App() {
 			<Routes>
 				<Route path="/" element={<>
 					<Header />
-					<Search />
 					<Home
 						lastPage={lastPage}
 						setLastPage={setLastPage}

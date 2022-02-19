@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const apiSearchURL = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=monet"
+const apiSearchURL = "https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&artisOrCulture"
 const apiObjectURL = "https://collectionapi.metmuseum.org/public/collection/v1/objects/";
 
 let dataSummary;
@@ -45,9 +45,11 @@ export const getArtworkData = async (objectID, detailed = true) => {
 	return result;
 }
 
-export const getArtworksData = async (itemsPerPage, page) => {
+export const getArtworksData = async (itemsPerPage, page, query) => {
+	if (!query) query = "monet";
+	console.log(query);
 	if (!dataSummary) {
-		const {data} = await axios.get(apiSearchURL);
+		const {data} = await axios.get(apiSearchURL.concat("&q=", query));
 		dataSummary = data;
 	}
 	const {objectIDs, total} = dataSummary;
