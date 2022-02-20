@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import demo from "./test";
 
-const Collection = async () => {
+const Collection = () => {
 
   return (
     <div className="Collection">

@@ -29,7 +29,7 @@ function App() {
 			const result = await getResultSet(searchExp);
 			setResultSet(result);
 			setArtworkList([]);
-			setLastPage(1);
+			setLastPage(1);	
 		}
 
 		loadResultSet();
