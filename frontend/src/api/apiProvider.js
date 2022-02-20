@@ -1,10 +1,7 @@
 import axios from "axios";
 
-
 const apiSearchURL = "https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&artisOrCulture"
 const apiObjectURL = "https://collectionapi.metmuseum.org/public/collection/v1/objects/";
-
-let dataSummary;
 
 export const getArtworkData = async (objectID, detailed = true) => {
 	const {data} = await axios.get(apiObjectURL.concat(objectID.toString()));
@@ -45,25 +42,17 @@ export const getArtworkData = async (objectID, detailed = true) => {
 	return result;
 }
 
-export const getArtworksData = async (itemsPerPage, page, query) => {
+export const getResultSet = async (query) => {
 	if (!query) query = "monet";
-	console.log(query);
-	if (!dataSummary) {
-		const {data} = await axios.get(apiSearchURL.concat("&q=", query));
-		dataSummary = data;
+	const {data: {objectIDs}} = await axios.get(apiSearchURL.concat("&q=", query));
+	return objectIDs;
+}
+
+export const getArtworkPageData = async (objctIDsPage) => {
+	const pageData = [];
+	for (const objectID of objctIDsPage) {
+		const artwork = await getArtworkData(objectID, false);
+		pageData.push(artwork);
 	}
-	const {objectIDs, total} = dataSummary;
-	const firstItem = (page - 1) * itemsPerPage;
-	const lastItem = firstItem + itemsPerPage;
-	const objectIDsPage = objectIDs.slice(firstItem, lastItem);
-	const objectList = [];
-	for (const objectID of objectIDsPage) {
-		const object = await getArtworkData(objectID, false);
-		objectList.push(object);
-	}
-	const result = {
-		artworks: objectList,
-		hasMorePage: (lastItem <= total)
-	}
-	return result;
+	return pageData;
 }
