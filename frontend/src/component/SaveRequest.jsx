@@ -2,7 +2,7 @@ import axios from "axios";
 
 const apiSaveURL = "http://localhost:4000/api/save"
 
-export const SaveArtwork = async (data) => {
+const saveArtwork = async (data) => {
   console.log(data);
   const newArt = {
     id: data.id,
@@ -22,4 +22,4 @@ export const SaveArtwork = async (data) => {
     }
   }
 };
-export default SaveArtwork;
+export default saveArtwork
