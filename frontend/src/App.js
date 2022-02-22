@@ -40,7 +40,9 @@ function App() {
 					</>}/>
 					<Route path="/register" element={<>
 						<Header />
-						<Register/>
+						<Register
+							
+						/>
 						<Footer />
 					</>}/>
 					<Route path="/login" element={<>
