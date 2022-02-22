@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Home from "./Home";
 
 const Login = () => {
@@ -24,7 +24,7 @@ const Login = () => {
         console.log(response);
         localStorage.setItem("sessionId", response.data);
       } catch (err) {
-        alert("Wrong Email or password");
+        alert("Wrong email or password");
       }
     };
     

@@ -16,7 +16,7 @@ const Collection = () => {
 
   return (
     <>
-      <h1>Your collection</h1>
+      <h1>My collection</h1>
       <div className="collection">
         {saved.map((art) => (
           <div className="thumbNailDiv" key={art.id}>
