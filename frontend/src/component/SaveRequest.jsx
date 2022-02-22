@@ -2,7 +2,9 @@ import axios from "axios";
 
 const apiSaveURL = "http://localhost:4000/api/save"
 
-const saveArtwork = async (data) => {
+const saveArtwork = async (data, props) => {
+const {authEmail, authPassword} = props;
+
   console.log(data);
   const newArt = {
     id: data.id,
@@ -11,7 +13,10 @@ const saveArtwork = async (data) => {
     image: data.image,
   };
   try {
-    await axios.post(apiSaveURL, newArt);
+    await axios.post(apiSaveURL, newArt, {headers: {
+      authorization:  authEmail + ':::' + authPassword
+    }}
+);
     alert("Artwork saved!");
   } catch (err) {
     if (!err.response) {
