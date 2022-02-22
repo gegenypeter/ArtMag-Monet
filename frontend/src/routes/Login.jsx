@@ -1,12 +1,19 @@
 import React from "react";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Home from "./Home";
 
 const Login = () => {
   const [authEmail, setAuthEmail] = useState("");
   const [authPassword, setAuthPassword] = useState("");
   const [displayPage, setDisplayPage] = useState("Login");
+
+/*   useEffect(() => {
+    login()
+      
+  }, []) */
+  
+  console.log(displayPage)
 
   const login = async () => {
     try {
@@ -21,9 +28,12 @@ const Login = () => {
       );
       setDisplayPage("Home");
       localStorage.setItem("sessionId", response.data);
+      console.log(response.data)
     } catch (err) {
-      alert("Wrong EmailauthEmailname or password");
+      alert("Wrong email or password");
     }
+   
+    console.log(displayPage)
   };
 
   return (
@@ -45,7 +55,7 @@ const Login = () => {
               required
               onChange={(e) => setAuthPassword(e.target.value)}
             ></input>
-            <button onClick={() => login()}>Sign in</button>
+            <button onClick={login}>Sign in</button>
           </form>
         </div>
       )}

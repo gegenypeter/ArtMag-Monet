@@ -35,7 +35,7 @@ const Register = () => {
           <h1>Register</h1>
           <input type="email" placeholder="Email" required onChange={(e)=>setEmail(e.target.value)}></input>
           <input type="password" placeholder="Password" required onChange={(e) => setPassword(e.target.value)}></input>
-          <button onClick={() => register()}>Register</button>
+          <button onClick={() => register()}>Sign up</button>
       </form>
     </div>
   )
