@@ -55,7 +55,7 @@ function App() {
 						<Footer />
 					</>}/>
 				</Routes>
-			</BrowserRouter>,
+			</BrowserRouter>
 		</div>
 	);
 }

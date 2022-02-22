@@ -58,3 +58,7 @@ button:hover {
     position: absolute;
     left: 0.1rem;
 }
+
+.myCollection {
+    width: fit-content;
+}

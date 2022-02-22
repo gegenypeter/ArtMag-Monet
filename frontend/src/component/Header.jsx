@@ -8,6 +8,9 @@ const Header = () => {
 
     return (
         <header>
+            <NavLink to="/collection">
+                <button className="myCollection">My collection</button>
+            </NavLink>
             <NavLink to="/">
                 <button className="homeButton">Home</button>
             </NavLink>
