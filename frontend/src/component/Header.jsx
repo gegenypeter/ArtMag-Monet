@@ -10,6 +10,7 @@ const Header = () => {
         <header>
             <NavLink to="/">
                 <button className="homeButton">Home</button>
+                <button className="Logout">Logout</button>
             </NavLink>
             <div className="buttonDiv">
                 <NavLink to="/register">

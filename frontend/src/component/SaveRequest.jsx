@@ -2,9 +2,10 @@ import axios from "axios";
 
 const apiSaveURL = "http://localhost:4000/api/save"
 
-const saveArtwork = async (data, props) => {
-const {authEmail, authPassword} = props;
-
+const saveArtwork = async ({data, props}) => {
+ const {authEmail, authPassword} = props
+ console.log(data);
+ 
   console.log(data);
   const newArt = {
     id: data.id,

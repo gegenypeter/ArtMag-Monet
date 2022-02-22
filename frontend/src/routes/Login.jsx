@@ -6,8 +6,9 @@ import Home from "./Home";
 const Login = () => {
   const [authEmail, setAuthEmail] = useState("");
   const [authPassword, setAuthPassword] = useState("");
-  const [displayPage, setDisplayPage] = useState("Login");
-
+  const [displayPage, setDisplayPage] = useState("Logi");
+  console.log(displayPage);
+  
   const login = async () => {
     try {
       const response = await axios.post(
@@ -18,18 +19,35 @@ const Login = () => {
             authorization: authEmail + ":::" + authPassword,
           },
         }
-      );
-      setDisplayPage("Home");
-      localStorage.setItem("sessionId", response.data);
-    } catch (err) {
-      alert("Wrong EmailauthEmailname or password");
+        );
+        setDisplayPage("Home");
+        console.log(response);
+        localStorage.setItem("sessionId", response.data);
+      } catch (err) {
+        alert("Wrong Email or password");
+      }
+    };
+    
+    const signout = async () => {
+     try {
+       const response = await axios.delete('http://localhost:4000/api/login', {
+       }, {
+         headers: {
+           authorization: authEmail + ':::' + authPassword
+         }
+       })}
+     catch (err) {}
+     finally{
+       localStorage.removeItem("sessionId")
+     }
+    
     }
-  };
+
 
   return (
     <>
-      {displayPage === "Home" && <Home />}
-      {displayPage === "Login" && (
+      {displayPage === "Home" ? <Home /> : 
+      (
         <div className="Login">
           <form className="loginForm">
             <h1 className="login">Login</h1>
@@ -46,8 +64,10 @@ const Login = () => {
               onChange={(e) => setAuthPassword(e.target.value)}
             ></input>
             <button onClick={() => login()}>Sign in</button>
+            <button onClick={() => signout()}>Sign out</button>
           </form>
         </div>
+        
       )}
     </>
   );
