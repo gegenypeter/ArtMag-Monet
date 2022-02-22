@@ -45,6 +45,8 @@ export const getArtworkData = async (objectID, detailed = true) => {
 export const getResultSet = async (query) => {
 	if (!query) query = "monet";
 	const {data: {objectIDs}} = await axios.get(apiSearchURL.concat("&q=", query));
+	console.log(objectIDs);
+	console.log(query)
 	return objectIDs;
 }
 

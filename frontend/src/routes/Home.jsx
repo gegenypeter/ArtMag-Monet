@@ -1,13 +1,17 @@
 import { useState } from 'react';
+import { getArtworkData, getResultSet } from '../api/apiProvider';
 import ArtworkThumbnail from '../component/ArtworkThumbnail';
 import '../styles/Home.css';
 
 function Home(props) {
 	
 	const {artworkList, canLoadMore, searchExp, setSearchExp, showMore} = props;
-
+	
 	const [searchText, setSearchText] = useState(searchExp);
+	console.log(searchText);
 
+
+	
 	return (<>
 		<div className='searchDiv'>
 			<h1 className="headerTitle">The Metropolitan Museum of Art Collection</h1>
@@ -18,7 +22,7 @@ function Home(props) {
 				value={searchText}
 				onChange={(event) => setSearchText(event.target.value)}
 			/>
-			<button onClick={() => setSearchExp(searchText)}>Search</button>
+			<button onClick={() => {setSearchExp(searchText);getArtworkData(getResultSet(searchText))}}>Search</button>
 		</div>
 
 		<div className="Home">
