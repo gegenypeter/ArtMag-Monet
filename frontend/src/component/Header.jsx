@@ -9,6 +9,9 @@ const Header = () => {
     return (
         <header>
             <div className="buttonDiv">
+                <NavLink to="/">
+                    <button>Home</button>
+                </NavLink>
                 <NavLink to="/register">
                     <button>Register</button>
                 </NavLink>
