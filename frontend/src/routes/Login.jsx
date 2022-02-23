@@ -6,11 +6,14 @@ import { logIn } from "../api/middleProvider"
 
 
 const Login = (props) => {
-  const {authEmail, authPassword, setAuthEmail, setAuthPassword, isLoggedIn, setIsLoggedIn} = props;
-
+  const {authEmail, setAuthEmail, isLoggedIn, setIsLoggedIn} = props;
+const [emailText, setEmailText] = useState("");
+const [passwordText, setPasswordText] = useState("");
 
 const logInClick = async () => {
-  setIsLoggedIn(await logIn(authEmail, authPassword))
+  await setIsLoggedIn(await logIn(setAuthEmail, emailText, passwordText))
+/*   if (isLoggedIn) setAuthEmail(emailText);
+ */  console.log(authEmail);
 }
 
 return (
@@ -23,13 +26,13 @@ return (
               type="email"
               placeholder="Email"
               required
-              onChange={(e) => setAuthEmail(e.target.value)}
+              onChange={(e) => setEmailText(e.target.value)}
             ></input>
             <input
               type="password"
               placeholder="Password"
               required
-              onChange={(e) => setAuthPassword(e.target.value)}
+              onChange={(e) => setPasswordText(e.target.value)}
             ></input>
             <button onClick={() => logInClick()}>Sign in</button>
           </div>

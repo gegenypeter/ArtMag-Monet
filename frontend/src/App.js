@@ -19,6 +19,7 @@ function App() {
 	const [authEmail, setAuthEmail] = useState("");
 	const [authPassword, setAuthPassword] = useState("");
 	const [isLoggedIn, setIsLoggedIn] = useState(false)
+	const [userArtworks, setUserArtworks] = useState([]);
 
 	const [
 		artworkList,
@@ -94,8 +95,9 @@ function App() {
 							authPassword={authPassword}
 						/>
 						<Collection
+						userArtworks={userArtworks}
+						setUserArtworks={setUserArtworks}
 						authEmail={authEmail}
-						authPassword={authPassword}
 						/>
 						<Footer />
 					</>}/>

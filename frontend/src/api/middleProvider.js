@@ -15,7 +15,7 @@ export const logOut = async (email, password) => {
 	}
 }
 
-export const logIn = async (email, password) => {
+export const logIn = async (setEmail, email, password) => {
 	let result = false;
     try {
     	const response = await axios.post(
@@ -26,6 +26,7 @@ export const logIn = async (email, password) => {
         });
 
         localStorage.setItem("sessionId", await response.data);
+		setEmail(email)
 		result = true;
     }
 	catch (err) {
