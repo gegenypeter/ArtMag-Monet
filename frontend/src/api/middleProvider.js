@@ -13,6 +13,26 @@ export const logOut = async (email, password) => {
 	finally{
 		localStorage.removeItem("sessionId")
 	}
-   
-   }
+}
+
+export const logIn = async (email, password) => {
+	let result = false;
+    try {
+    	const response = await axios.post(
+        "http://localhost:4000/api/login", {}, {
+        	headers: {
+            	authorization: email + ":::" + password,
+          	},
+        });
+
+        localStorage.setItem("sessionId", await response.data);
+		result = true;
+    }
+	catch (err) {
+        alert("Wrong email or password");
+    }
+	return result;
+};
+    
+
 
