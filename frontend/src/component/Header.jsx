@@ -34,7 +34,7 @@ const Header = (props) => {
             </NavLink>
             <NavLink to="/">
                 <button className="homeButton">Home</button>
-                <button className="Logout" onClick={signout}>Log out</button>
+                {isLoggedIn && <button className="Logout" onClick={signout}>Log out</button>}
             </NavLink>
             <div className="buttonDiv">
                 <NavLink to="/register">
