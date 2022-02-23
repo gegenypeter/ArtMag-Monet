@@ -16,10 +16,8 @@ const Register = (props) => {
   const registerClick = async () => {
     const status = await register(emailText, passwordText);
     if ((status) === 200) {
-      setIsLoggedIn(await logIn(setEmail, emailText, passwordText));
       alert('successful registration');
-      setEmailText('');
-      setPasswordText('');
+      setIsLoggedIn(await logIn(setEmail, emailText, passwordText));
       navigate('/');
     }
     else {

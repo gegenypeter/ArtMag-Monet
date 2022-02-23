@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/Header.css";
 import { logOut } from "../api/middleProvider";
 
@@ -7,28 +7,38 @@ const Header = (props) => {
 
     const {isLoggedIn, authEmail, authPassword, setIsLoggedIn} = props;
 
+    const navigate = useNavigate();
+
     const logOutClick = () => {
         logOut(authEmail, authPassword);
         setIsLoggedIn(false);
+        navigate("/");
     }
 
     return (
         <header>
-            <NavLink to="/collection">
-                {isLoggedIn && <button className="myCollection">My collection</button>}
-            </NavLink>
             <NavLink to="/">
                 <button className="homeButton">Home</button>
-                {isLoggedIn && <button className="Logout" onClick={logOutClick}>Log out</button>}
             </NavLink>
+
+            {isLoggedIn && <>
+                <NavLink to="/collection">
+                    <button className="myCollection">My collection</button>
+                </NavLink>
+                <p>{authEmail}</p>
+                <button className="Logout" onClick={logOutClick}>Log out</button>
+            </>}
+
+            {!isLoggedIn &&
             <div className="buttonDiv">
                 <NavLink to="/register">
-                   {!isLoggedIn && <button>Register</button>}
+                   <button>Register</button>
                 </NavLink>
                 <NavLink to="/login">
-                    {!isLoggedIn && <button>Log in</button>}
+                    <button>Log in</button>
                 </NavLink>
             </div>
+            }
 
         </header>
     )
