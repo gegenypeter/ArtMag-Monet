@@ -1,31 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../styles/Header.css"
-import axios from "axios";
-
-
+import "../styles/Header.css";
+import { logOut } from "../api/middleProvider";
 
 const Header = (props) => {
 
     const {isLoggedIn, authEmail, authPassword, setIsLoggedIn} = props;
 
-    const signout = async () => {
-        try {
-          await axios.delete('http://localhost:4000/api/login', {
-          }, {
-            headers: {
-              authorization: authEmail + ':::' + authPassword
-            }
-          })
-        }
-        catch (err) {}
-        finally{
-            localStorage.removeItem("sessionId")
-            setIsLoggedIn(false)
-        }
-       
-       }
-   
+    const logOutClick = () => {
+        logOut(authEmail, authPassword);
+        setIsLoggedIn(false);
+    }
 
     return (
         <header>
@@ -34,7 +19,7 @@ const Header = (props) => {
             </NavLink>
             <NavLink to="/">
                 <button className="homeButton">Home</button>
-                {isLoggedIn && <button className="Logout" onClick={signout}>Log out</button>}
+                {isLoggedIn && <button className="Logout" onClick={logOutClick}>Log out</button>}
             </NavLink>
             <div className="buttonDiv">
                 <NavLink to="/register">
