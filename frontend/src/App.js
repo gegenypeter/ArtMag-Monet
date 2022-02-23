@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import './App.css';
 
@@ -12,10 +12,24 @@ import Artwork from './routes/Artwork'
 import Collection from './routes/Collection'
 import Login from './routes/Login'
 import Register from './routes/Register'
+import { useState } from "react";
 
 function App() {
-	
-	const [artworkList, searchExpr, setSearchExpr, lastPage, setLastPage, canLoadMore, resultNo] = useArtworks("");
+
+	const [authEmail, setAuthEmail] = useState("");
+	const [authPassword, setAuthPassword] = useState("");
+	const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+
+	const [
+		artworkList,
+		searchExpr,
+		setSearchExpr,
+		lastPage,
+		setLastPage,
+		canLoadMore,
+		resultNo,
+	] = useArtworks("");
 	
 	
 	const showMore = () => {
@@ -45,11 +59,18 @@ function App() {
 						/>
 						<Footer />
 					</>}/>
-					<Route path="/login" element={<>
-						<Header />
-						<Login/>
-						<Footer />
-					</>}/>
+						<Route path="/login" element={<>
+							<Header />		 
+							<Login
+								authEmail={authEmail}
+								authPassword={authPassword}
+								setAuthEmail={setAuthEmail}
+								setAuthPassword={setAuthPassword}
+								isLoggedIn={isLoggedIn}
+								setIsLoggedIn={setIsLoggedIn}
+							/>
+							<Footer />
+						</>}/>
 					<Route path="/artwork/:id" element={<Artwork/>}/> 
 					<Route path="/collection" element={<>
 						<Header />

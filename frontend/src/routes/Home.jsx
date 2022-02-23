@@ -9,7 +9,6 @@ function Home(props) {
 
 	const [searchText, setSearchText] = useState(searchExpr);
 
-
 	
 	return (<>
 		<div className='searchDiv'>

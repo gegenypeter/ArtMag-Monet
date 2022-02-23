@@ -1,13 +1,12 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import Home from "./Home";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-const Login = () => {
-  const [authEmail, setAuthEmail] = useState("");
-  const [authPassword, setAuthPassword] = useState("");
-  const [displayPage, setDisplayPage] = useState("Logi");
-  console.log(displayPage);
+
+const Login = (props) => {
+  const {authEmail, authPassword, setAuthEmail, setAuthPassword, isLoggedIn, setIsLoggedIn} = props;
+
   
   const login = async () => {
     try {
@@ -20,7 +19,7 @@ const Login = () => {
           },
         }
         );
-        setDisplayPage("Home");
+        setIsLoggedIn(true);
         console.log(response);
         localStorage.setItem("sessionId", response.data);
       } catch (err) {
@@ -30,7 +29,7 @@ const Login = () => {
     
     const signout = async () => {
      try {
-       const response = await axios.delete('http://localhost:4000/api/login', {
+       await axios.delete('http://localhost:4000/api/login', {
        }, {
          headers: {
            authorization: authEmail + ':::' + authPassword
@@ -46,7 +45,7 @@ const Login = () => {
 
   return (
     <>
-      {displayPage === "Home" ? <Home /> : 
+      {isLoggedIn && <Navigate to="/" />} 
       (
         <div className="Login">
           <form className="loginForm">
@@ -68,7 +67,7 @@ const Login = () => {
           </form>
         </div>
         
-      )}
+      )
     </>
   );
 };

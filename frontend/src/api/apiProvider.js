@@ -87,6 +87,7 @@ export const useArtworks = (initSearchExpr) => {
 		setObjectIDs(oIds);
 		setResultNo(oIds.length);
 		setLastPage(1);
+
 	}
 
 	useEffect(() => {
