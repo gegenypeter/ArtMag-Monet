@@ -34,7 +34,7 @@ return (
               required
               onChange={(e) => setPasswordText(e.target.value)}
             ></input>
-            <button onClick={() => logInClick()}>Sign in</button>
+            <button onClick={() => logInClick()}>Login</button>
           </div>
         </div>
     </>
