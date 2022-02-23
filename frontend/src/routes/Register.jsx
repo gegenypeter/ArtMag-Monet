@@ -18,6 +18,10 @@ const Register = () => {
       setPassword('')
     } catch (err) {
       if (!err.response) return alert('Ooops...Something went wrong')
+      if (err.response.status === 401) {
+        alert('Wrong email format!')
+
+      }
       if (err.response.status === 409) {
         alert('User already exist')
       }
@@ -33,8 +37,8 @@ const Register = () => {
     <div className="Register">
       <form className="registerForm">
           <h1>Register</h1>
-          <input type="email" placeholder="Email" onChange={(e)=>setEmail(e.target.value)} required></input>
-          <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required></input>
+          <input type="email" placeholder="Email" onChange={(e)=>setEmail(e.target.value)} pattern="^([a-zA-Z0-9_-.]+)@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.)|(([a-zA-Z0-9-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?)$" required/>
+          <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required/>
           <button onClick={() => register()}>Sign up</button>
       </form>
     </div>
