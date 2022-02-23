@@ -20,7 +20,6 @@ function App() {
 	const [authPassword, setAuthPassword] = useState("");
 	const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-
 	const [
 		artworkList,
 		searchExpr,
@@ -41,7 +40,12 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<>
-						<Header />
+						<Header 
+							isLoggedIn={isLoggedIn}
+							setIsLoggedIn={setIsLoggedIn}
+							authEmail={authEmail}
+							authPassword={authPassword}
+						/>
 						<Home
 							artworkList={artworkList}
 							canLoadMore={canLoadMore}
@@ -53,14 +57,24 @@ function App() {
 						<Footer />
 					</>}/>
 					<Route path="/register" element={<>
-						<Header />
+						<Header 
+							isLoggedIn={isLoggedIn}
+							setIsLoggedIn={setIsLoggedIn}
+							authEmail={authEmail}
+							authPassword={authPassword}
+						/>
 						<Register
 							
 						/>
 						<Footer />
 					</>}/>
 						<Route path="/login" element={<>
-							<Header />		 
+							<Header 
+							isLoggedIn={isLoggedIn}
+							setIsLoggedIn={setIsLoggedIn}
+							authEmail={authEmail}
+							authPassword={authPassword}
+							/>		 
 							<Login
 								authEmail={authEmail}
 								authPassword={authPassword}
@@ -73,8 +87,16 @@ function App() {
 						</>}/>
 					<Route path="/artwork/:id" element={<Artwork/>}/> 
 					<Route path="/collection" element={<>
-						<Header />
-						<Collection/>
+						<Header 
+							isLoggedIn={isLoggedIn}
+							setIsLoggedIn={setIsLoggedIn}
+							authEmail={authEmail}
+							authPassword={authPassword}
+						/>
+						<Collection
+						authEmail={authEmail}
+						authPassword={authPassword}
+						/>
 						<Footer />
 					</>}/>
 				</Routes>

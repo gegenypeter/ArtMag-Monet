@@ -1,13 +1,40 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/ThumbNail.css";
-import saveArtwork from "./SaveRequest";
+import axios from "axios";
 
 // Ez egyetlen ArtworTthumbnail legyen inkább és az App.js-be legyen map-elve /Laci/
 
 const artworkThumbnail = (props) => {
 
-  const {id, title, image, artistName} = props;
+  const {id, title, image, artistName, authEmail, authPassword} = props;
+
+  const apiSaveURL = "http://localhost:4000/api/save"
+
+  const saveArtwork = async (data) => {
+ 
+    const newArt = {
+      id: data.id,
+      title: data.title,
+      artist: data.artistName,
+      image: data.image,
+    };
+    try {
+      await axios.post(apiSaveURL, newArt, {headers: {
+        authorization: localStorage.getItem("sessionId")
+      }}
+  );
+      alert("Artwork saved!");
+    } catch (err) {
+      if (!err.response) {
+        alert("Something went wrong");
+      }
+      if (err.response.status === 409) {
+        alert("Artwork already saved!");
+      }
+    }
+  };
+
 
   return (
     <div className='thumbNailDiv' key={`div1${id}`}>

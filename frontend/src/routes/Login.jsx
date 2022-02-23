@@ -10,7 +10,7 @@ const Login = (props) => {
   
   const login = async () => {
     try {
-      const response = await axios.post(
+       const response = await axios.post(
         "http://localhost:4000/api/login",
         {},
         {
@@ -19,36 +19,19 @@ const Login = (props) => {
           },
         }
         );
-        setIsLoggedIn(true);
-        console.log(response);
-        localStorage.setItem("sessionId", response.data);
+          setIsLoggedIn(true);
+          localStorage.setItem("sessionId",await response.data);
       } catch (err) {
         alert("Wrong email or password");
       }
     };
     
-    const signout = async () => {
-     try {
-       await axios.delete('http://localhost:4000/api/login', {
-       }, {
-         headers: {
-           authorization: authEmail + ':::' + authPassword
-         }
-       })}
-     catch (err) {}
-     finally{
-       localStorage.removeItem("sessionId")
-     }
-    
-    }
-
 
   return (
     <>
-      {isLoggedIn && <Navigate to="/" />} 
-      (
+      {isLoggedIn && <Navigate to="/" />}
         <div className="Login">
-          <form className="loginForm">
+          <div className="loginForm">
             <h1 className="login">Login</h1>
             <input
               type="email"
@@ -63,11 +46,8 @@ const Login = (props) => {
               onChange={(e) => setAuthPassword(e.target.value)}
             ></input>
             <button onClick={() => login()}>Sign in</button>
-            <button onClick={() => signout()}>Sign out</button>
-          </form>
+          </div>
         </div>
-        
-      )
     </>
   );
 };

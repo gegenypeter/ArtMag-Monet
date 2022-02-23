@@ -4,26 +4,36 @@ import "../styles/Collection.css";
 
 const Collection = () => {
   const [saved, setSaved] = useState([]);
-  console.log(saved);
+  const sessionId = localStorage.getItem('sessionId');
+  console.log(sessionId);
+
+  async function load() {
+    const response = await axios("http://localhost:4000/api/collection",{}, {headers: {
+      authorization: sessionId,
+    }})
+    setSaved(response.data);
+  };
 
   useEffect(() => {
-    async function load() {
-      const response = await axios("http://localhost:4000/api/collection");
-      setSaved(response.data);
+    try {
+      load();
     }
-    load();
+    catch(err){}
+    if (!sessionId) return
   }, []);
+
+
 
   return (
     <>
       <h1>My collection</h1>
       <div className="collection">
         {saved.map((art) => (
-          <div className="thumbNailDiv" key={art.id}>
-            <img className="smallImg" alt="" src={art.image} />
+          <div className="thumbNailDiv" key={art.artworks.id}>
+            <img className="smallImg" alt="" src={art.artworks.image} />
             <div className="contentDiv">
-              <p className="artWorkTitle">{art.title}</p>
-              <p className="artistName">Artist: {art.artist}</p>
+              <p className="artWorkTitle">{art.artworks.title}</p>
+              <p className="artistName">Artist: {art.artworks.artist}</p>
             </div>
           </div>
         ))}
