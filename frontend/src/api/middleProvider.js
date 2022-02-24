@@ -4,7 +4,7 @@ import axios from 'axios';
 export const register = async (email, password) => {
 	let result = false;
     try {
-    	const res = await axios.post('http://34.159.141.214/api/signup',
+    	const res = await axios.post('http://localhost:4000/api/signup',
 			{
 				email: email,
 				password: password
@@ -22,7 +22,7 @@ export const register = async (email, password) => {
 
 export const logOut = async (email, password) => {
 	try {
-		await axios.delete('http://34.159.141.214/api/login', {}, {
+		await axios.delete('http://localhost:4000/api/login', {}, {
 			headers: {
 				authorization: email + ':::' + password
 			}
@@ -38,7 +38,7 @@ export const logOut = async (email, password) => {
 export const logIn = async (setEmail, email, password) => {
 	let result = false;
     try {
-    	const response = await axios.post("http://34.159.141.214/api/login", {}, {
+    	const response = await axios.post("http://localhost:4000/api/login", {}, {
         	headers: {
             	authorization: email + ":::" + password,
           	},

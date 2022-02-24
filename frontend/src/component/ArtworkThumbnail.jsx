@@ -9,7 +9,7 @@ const artworkThumbnail = (props) => {
 
   const {id, title, image, artistName, canBeSaved} = props;
 
-  const apiSaveURL = "http://34.159.141.214/api/save"
+  const apiSaveURL = "http://localhost:4000/api/save"
 
   const saveArtwork = async (data) => {
  

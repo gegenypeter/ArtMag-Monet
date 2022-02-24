@@ -7,7 +7,7 @@ const Collection = (props) => {
   async function load() {
     console.log(authEmail);
     const response = await axios(
-      `http:/34.159.141.214/api/collection`,{params: {email: authEmail }});
+      `http://localhost:4000/api/collection`,{params: {email: authEmail }});
       setUserArtworks(await response.data);
     }
     
