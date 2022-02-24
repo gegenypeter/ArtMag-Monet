@@ -24,7 +24,7 @@
 
  h1 {
 	 font-size: 25px;
-	 margin: 25px 0
+	 margin: 25px auto 0;
  }
 .image {
 	display: inline-block;
@@ -95,5 +95,8 @@ a.more {
 	}
 	.contentDiv {
 		width: 90%;
+	}
+	.collection {
+		margin: 0 auto;
 	}
 }
