@@ -7,12 +7,12 @@ const Header = (props) => {
 
     const {isLoggedIn, authEmail, authPassword, setIsLoggedIn, setUserArtworks} = props;
 
-/*     const navigate = useNavigate();
- */
+    const navigate = useNavigate();
+
     const logOutClick = () => {
         logOut(authEmail, authPassword, setUserArtworks);
         setIsLoggedIn(false);
-        <Navigate to="/" />;
+        navigate("/");
     }
 
     return (
