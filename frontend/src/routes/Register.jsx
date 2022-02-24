@@ -35,7 +35,7 @@ const Register = (props) => {
     <div className="Register">
       <form className="registerForm">
           <h1>Register</h1>
-          <input type="email" value={emailText} placeholder="Email" onChange={(e) => setEmailText(e.target.value)} pattern="^([a-zA-Z0-9_-.]+)@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.)|(([a-zA-Z0-9-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?)$" required/>
+          <input type="email" value={emailText} placeholder="Email" onChange={(e) => setEmailText(e.target.value)} required/>
           <input type="password" value={passwordText} placeholder="Password" onChange={(e) => setPasswordText(e.target.value)} required/>
           <button onClick={() => registerClick()}>Send</button>
       </form>
