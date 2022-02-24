@@ -49,7 +49,9 @@ a.more {
 	color: #ccc;
 	text-decoration: none;
 }
-
+.myCollection {
+	padding: 0 7px 0 7px;
+}
 @media screen and (max-width: 450px) {
 	.bigImg {
 		max-width: 90vw;
@@ -87,7 +89,7 @@ a.more {
 	}
 	.thumbNailDiv {
 		width: 300px;
-		height: 520px;
+		height: 570px;
 	}
 	.smallImg {
 		margin-top: 25px;
