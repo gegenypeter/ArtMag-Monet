@@ -7,7 +7,7 @@ import axios from "axios";
 
 const artworkThumbnail = (props) => {
 
-  const {id, title, image, artistName, authEmail, authPassword} = props;
+  const {id, title, image, artistName, canBeSaved} = props;
 
   const apiSaveURL = "http://localhost:4000/api/save"
 
@@ -46,7 +46,7 @@ const artworkThumbnail = (props) => {
         <p className="artistName" key={`p2${id}`}>Artist: {artistName}</p>
       </div>
       <div className="btnDiv" key={`div3${id}`}>
-        <button onClick={()=>saveArtwork(props)} className="save" key={`but${id}`}>Save</button>
+        {canBeSaved && <button onClick={()=>saveArtwork(props)} className="save" key={`but${id}`}>Add to my collection</button>}
       </div>
     </div>
   );

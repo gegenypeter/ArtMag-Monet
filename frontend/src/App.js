@@ -54,6 +54,7 @@ function App() {
 							setSearchExpr={setSearchExpr}
 							showMore={showMore}
 							resultNo={resultNo}
+							isLoggedIn={isLoggedIn}
 						/>
 					}/>
 					<Route path="/register" element={
