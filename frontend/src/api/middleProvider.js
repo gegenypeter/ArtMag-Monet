@@ -12,9 +12,18 @@ export const register = async (email, password) => {
 			}
 		)
 		result = res.status;
+		if (result === 200) {
+			alert("Successful registration!")
+		}
     }
     catch (err) {
 		result = err.response.status
+		if (result === 400) {
+			alert("Missing credentials")
+		}
+		if (result === 409) {
+			alert("User already exists")
+		}
       }
 	finally {
 		return result;
