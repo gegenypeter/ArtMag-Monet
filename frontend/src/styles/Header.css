@@ -62,3 +62,8 @@ button:hover {
 .myCollection {
     width: fit-content;
 }
+
+p{
+    align-self: center;
+    
+}
