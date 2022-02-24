@@ -25,8 +25,10 @@ const Header = (props) => {
                 <NavLink to="/collection">
                     <button className="myCollection">My collection</button>
                 </NavLink>
-                <p>{authEmail}</p>
-                <button className="Logout" onClick={logOutClick}>Log out</button>
+                <div className="logoutDiv">
+                    <button className="Logout" onClick={logOutClick}>Log out</button>
+                    <p className="userEmail">{authEmail}</p>
+                </div>
             </>}
 
             {!isLoggedIn &&
