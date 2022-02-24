@@ -65,6 +65,7 @@ function App() {
 						<Register
 							setIsLoggedIn={setIsLoggedIn}
 							setEmail={setAuthEmail}
+							setUserArtworks={setUserArtworks}
 						/>
 					}/>
 					<Route path="/login" element={

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Register = (props) => {
 
-  const {setEmail, setIsLoggedIn} = props;
+  const {setEmail, setIsLoggedIn, setUserArtworks} = props;
 
   const [emailText, setEmailText] = useState("")
   const [passwordText, setPasswordText] = useState("");
@@ -17,7 +17,7 @@ const Register = (props) => {
     const status = await register(emailText, passwordText);
     if ((status) === 200) {
       alert('successful registration');
-      setIsLoggedIn(await logIn(setEmail, emailText, passwordText));
+      await setIsLoggedIn(await logIn(setEmail, emailText, passwordText, setUserArtworks));
       navigate('/');
     }
     else {
