@@ -40,3 +40,17 @@ a.more {
 	color: #ccc;
 	text-decoration: none;
 }
+
+@media screen and (max-width: 450px) {
+    img {
+		max-width: 80vw;
+		height: auto;  
+    
+	}
+	.details.artwork {
+		width: 100%;
+		height:auto;
+		background-color: #333;
+	}
+
+}
