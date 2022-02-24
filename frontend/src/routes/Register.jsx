@@ -1,45 +1,43 @@
-import React from 'react'
-import axios from 'axios'
-import { useState } from 'react'
+import React from 'react';
+import { useState } from 'react';
+import { register, logIn } from '../api/middleProvider'
+import { useNavigate } from 'react-router-dom'
 
 
-const Register = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState('');
+const Register = (props) => {
 
-  const register = async () => {
-    try {
-      await axios.post('http://localhost:4000/api/signup', {
-        email: email,
-        password: password
-      })
-      alert('successful registration')
-      setEmail('')
-      setPassword('')
-    } catch (err) {
-      if (!err.response) return alert('Ooops...Something went wrong')
-      if (err.response.status === 401) {
-        alert('Wrong email format!')
+  const {setEmail, setIsLoggedIn} = props;
 
-      }
-      if (err.response.status === 409) {
+  const [emailText, setEmailText] = useState("")
+  const [passwordText, setPasswordText] = useState("");
+
+  const navigate = useNavigate();
+
+  const registerClick = async () => {
+    const status = await register(emailText, passwordText);
+    if ((status) === 200) {
+      alert('successful registration');
+      setIsLoggedIn(await logIn(setEmail, emailText, passwordText));
+      navigate('/');
+    }
+    else {
+      if (!status) return alert('Ooops...Something went wrong');
+      if (status === 409) {
         alert('User already exist')
       }
-
-      if (err.response.status === 400) {
+      if (status === 400) {
         alert('Missing credentials')
       }
     }
-
   }
 
   return (
     <div className="Register">
       <form className="registerForm">
           <h1>Register</h1>
-          <input type="email" placeholder="Email" onChange={(e)=>setEmail(e.target.value)} required/>
-          <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required/>
-          <button onClick={() => register()}>Sign up</button>
+          <input type="email" value={emailText} placeholder="Email" onChange={(e) => setEmailText(e.target.value)} pattern="^([a-zA-Z0-9_-.]+)@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.)|(([a-zA-Z0-9-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?)$" required/>
+          <input type="password" value={passwordText} placeholder="Password" onChange={(e) => setPasswordText(e.target.value)} required/>
+          <button onClick={() => registerClick()}>Send</button>
       </form>
     </div>
   )

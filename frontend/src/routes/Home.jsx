@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { getArtworkData, getResultSet } from '../api/apiProvider';
 import ArtworkThumbnail from '../component/ArtworkThumbnail';
 import '../styles/Home.css';
 
 function Home(props) {
 	
-	const {artworkList, canLoadMore, searchExpr, setSearchExpr, showMore, resultNo} = props;
+	const {artworkList, canLoadMore, searchExpr, setSearchExpr, showMore, resultNo, isLoggedIn} = props;
 
 	const [searchText, setSearchText] = useState(searchExpr);
 
@@ -39,6 +38,7 @@ function Home(props) {
 							title={title}
 							artistName={artist}
 							image={image}
+							canBeSaved={isLoggedIn}
 						/>
 						)
 						: <p>{artworkList}</p>

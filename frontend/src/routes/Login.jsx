@@ -6,19 +6,19 @@ import { logIn } from "../api/middleProvider"
 
 
 const Login = (props) => {
-  const {authEmail, setAuthEmail, isLoggedIn, setIsLoggedIn} = props;
-const [emailText, setEmailText] = useState("");
-const [passwordText, setPasswordText] = useState("");
+
+  const {setAuthEmail, isLoggedIn, setIsLoggedIn} = props;
+
+  const [emailText, setEmailText] = useState("");
+  const [passwordText, setPasswordText] = useState("");
 
 const logInClick = async () => {
   await setIsLoggedIn(await logIn(setAuthEmail, emailText, passwordText))
-/*   if (isLoggedIn) setAuthEmail(emailText);
- */  console.log(authEmail);
 }
 
 return (
     <>
-      {isLoggedIn && <Navigate to="/" />}
+      {isLoggedIn && <Navigate to="/"/>}
         <div className="Login">
           <div className="loginForm">
             <h1 className="login">Login</h1>

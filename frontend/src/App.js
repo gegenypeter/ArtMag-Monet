@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import './App.css';
 
@@ -28,7 +28,7 @@ function App() {
 		lastPage,
 		setLastPage,
 		canLoadMore,
-		resultNo,
+		resultNo
 	] = useArtworks("");
 	
 	
@@ -39,14 +39,14 @@ function App() {
 	return (
 		<div className="App">
 			<BrowserRouter>
+				<Header 
+					isLoggedIn={isLoggedIn}
+					setIsLoggedIn={setIsLoggedIn}
+					authEmail={authEmail}
+					authPassword={authPassword}
+				/>
 				<Routes>
-					<Route path="/" element={<>
-						<Header 
-							isLoggedIn={isLoggedIn}
-							setIsLoggedIn={setIsLoggedIn}
-							authEmail={authEmail}
-							authPassword={authPassword}
-						/>
+					<Route path="/" element={
 						<Home
 							artworkList={artworkList}
 							canLoadMore={canLoadMore}
@@ -54,54 +54,34 @@ function App() {
 							setSearchExpr={setSearchExpr}
 							showMore={showMore}
 							resultNo={resultNo}
-							/>
-						<Footer />
-					</>}/>
-					<Route path="/register" element={<>
-						<Header 
 							isLoggedIn={isLoggedIn}
-							setIsLoggedIn={setIsLoggedIn}
-							authEmail={authEmail}
-							authPassword={authPassword}
 						/>
+					}/>
+					<Route path="/register" element={
 						<Register
-							
+							setIsLoggedIn={setIsLoggedIn}
+							setEmail={setAuthEmail}
 						/>
-						<Footer />
-					</>}/>
-						<Route path="/login" element={<>
-							<Header 
+					}/>
+					<Route path="/login" element={
+						<Login
+							setAuthEmail={setAuthEmail}
 							isLoggedIn={isLoggedIn}
 							setIsLoggedIn={setIsLoggedIn}
-							authEmail={authEmail}
-							authPassword={authPassword}
-							/>		 
-							<Login
-								authEmail={authEmail}
-								authPassword={authPassword}
-								setAuthEmail={setAuthEmail}
-								setAuthPassword={setAuthPassword}
-								isLoggedIn={isLoggedIn}
-								setIsLoggedIn={setIsLoggedIn}
-							/>
-							<Footer />
-						</>}/>
-					<Route path="/artwork/:id" element={<Artwork/>}/> 
-					<Route path="/collection" element={<>
-						<Header 
-							isLoggedIn={isLoggedIn}
-							setIsLoggedIn={setIsLoggedIn}
-							authEmail={authEmail}
-							authPassword={authPassword}
 						/>
+					}/>
+					<Route path="/collection" element={
 						<Collection
-						userArtworks={userArtworks}
-						setUserArtworks={setUserArtworks}
-						authEmail={authEmail}
+							userArtworks={userArtworks}
+							setUserArtworks={setUserArtworks}
+							authEmail={authEmail}
 						/>
-						<Footer />
-					</>}/>
+					}/>
+					<Route path="/artwork/:id" element={<Artwork/>}/> 
 				</Routes>
+
+				<Footer/>
+
 			</BrowserRouter>
 		</div>
 	);
