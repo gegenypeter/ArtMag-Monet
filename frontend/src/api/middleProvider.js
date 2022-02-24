@@ -2,6 +2,25 @@ import axios from 'axios';
 import { middleBaseURL } from './middleBaseURL';
 
 
+export const saveArtwork = async (artwork) => {
+	let result = false;
+	try {
+		await axios.post(middleBaseURL.concat("/api/save"), artwork, {
+			headers: {
+				authorization: localStorage.getItem("sessionId")
+			}
+		})
+		result = true;
+	}
+	catch (err) {
+		result = err.response.status;
+	}
+	finally {
+		return result;
+	}
+};
+
+
 export const register = async (email, password) => {
 	let result = false;
     try {
@@ -12,9 +31,6 @@ export const register = async (email, password) => {
 			}
 		)
 		result = res.status;
-		if (result === 200) {
-			alert("Successful registration!")
-		}
     }
     catch (err) {
 		result = err.response.status
