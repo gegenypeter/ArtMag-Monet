@@ -13,6 +13,7 @@ body {
     position: relative;
     /* background-color: #5a5a5a; */
     background: url("../public/background.jpg") no-repeat fixed;
+    background-size: cover;
 }
 
 .App {
@@ -21,4 +22,12 @@ body {
     flex-direction: column;
     padding-bottom: var(--footer-height);
     min-height: 100vh;
+}
+
+@media screen and (max-width: 450px) {
+    .searchInput {
+        max-width: 80vw;
+    }
+    
+    
 }

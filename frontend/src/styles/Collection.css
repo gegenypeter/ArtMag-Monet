@@ -1,8 +1,19 @@
 .collection {
-    width: 1100px;
+    max-width: 1100px;
     margin: 100px auto;
     gap: 50px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
 }
+
+img {
+    width: auto;
+    max-height: 80vh;
+}
+
+h1 {
+    margin-top: 50px;
+    text-align: center;
+}
+

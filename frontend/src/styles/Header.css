@@ -25,7 +25,7 @@ input {
 }
 
 .headerTitle {
-    align-self: center;
+    margin: 0 auto;
 }
 
 button {
@@ -61,4 +61,13 @@ button:hover {
 
 .myCollection {
     width: fit-content;
+}
+
+p{
+    align-self: center;
+    
+}
+
+.userEmail {
+    font-size: 12px;
 }
