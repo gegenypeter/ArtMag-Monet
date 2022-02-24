@@ -5,10 +5,14 @@
 	display: inline-block;
 	/* box-sizing: border-box; */
 }
-
+.artworkContainer.artwork {
+	z-index: -100;
+	padding-top: 20px;
+	background-color: #333;
+}
 .artworkContainer {
-	display: flex;
 	position: absolute;
+	display: flex;
 	flex-wrap: wrap;
 	top: 0;
 	left: 0;
@@ -17,18 +21,23 @@
 	/* padding: 20px; */
 }
 
+
+ h1 {
+	 font-size: 25px;
+	 margin: 25px 0
+ }
 .image {
 	display: inline-block;
-	margin: 50px;
+	margin: 50px 50px 0 50px ;
 }
 
-img {
-	width: 50vw;
+.bigImg {
+	max-width: 1000px;
 }
 
 .details {
 	display: inline-block;
-	margin: 50px;
+	margin: 50px auto 0 50px;
 }
 
 
@@ -42,15 +51,48 @@ a.more {
 }
 
 @media screen and (max-width: 450px) {
-    img {
-		max-width: 80vw;
-		height: auto;  
-    
+	.bigImg {
+		max-width: 90vw;
+		height: auto;
+		margin: 0 auto;
 	}
 	.details.artwork {
 		width: 100%;
+		padding: 0 7% 20px 7%;
 		height:auto;
 		background-color: #333;
 	}
-
+	.details {
+		margin: 0 auto;
+	}
+	.image {
+		margin: 70px auto 20px;
+	}
+	.image.artwork {
+		box-sizing: content-box;
+		height: auto;
+		width: 100vw;
+		text-align: center;
+	}
+	.artworkContainer{
+		height: 100vh;
+		display: block;
+	}
+	footer {
+		visibility: hidden;
+	}
+	.searchDiv {
+		margin-bottom: 0;
+	}
+	.thumbNailDiv {
+		width: 300px;
+		height: 520px;
+	}
+	.smallImg {
+		margin-top: 25px;
+		width: 250px;
+	}
+	.contentDiv {
+		width: 90%;
+	}
 }

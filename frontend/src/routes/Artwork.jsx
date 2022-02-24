@@ -23,7 +23,7 @@ const Artwork = () => {
 	return (
 		<div className="artworkContainer artwork">
 			<div className="image artwork">
-				{(artwork.image) && <img src={artwork.image.large} alt={artwork.title}/>}
+				{(artwork.image) && <img className="bigImg" src={artwork.image.large} alt={artwork.title}/>}
 			</div>
 			<div className="details artwork">
 				{(artwork.creationYear) && <p>{artwork.creationYear}</p>}
