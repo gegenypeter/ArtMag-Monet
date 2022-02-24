@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Navigate } from "react-router-dom";
 import "../styles/Header.css";
 import { logOut } from "../api/middleProvider";
 
@@ -7,12 +7,12 @@ const Header = (props) => {
 
     const {isLoggedIn, authEmail, authPassword, setIsLoggedIn, setUserArtworks} = props;
 
-    const navigate = useNavigate();
-
+/*     const navigate = useNavigate();
+ */
     const logOutClick = () => {
         logOut(authEmail, authPassword, setUserArtworks);
         setIsLoggedIn(false);
-        navigate("/");
+        <Navigate to="/" />;
     }
 
     return (
