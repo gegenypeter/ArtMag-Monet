@@ -77,6 +77,7 @@ a.more {
 	.artworkContainer{
 		height: 100vh;
 		display: block;
+		width: 100vw;
 	}
 	footer {
 		visibility: hidden;
