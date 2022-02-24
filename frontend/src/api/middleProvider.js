@@ -3,7 +3,7 @@ import { middleBaseURL } from './middleBaseURL';
 
 
 export const register = async (email, password) => {
-	let result = false;
+	let result = null;
     try {
     	const res = await axios.post(middleBaseURL.concat("/api/signup"),
 			{
