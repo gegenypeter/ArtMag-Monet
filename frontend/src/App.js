@@ -44,6 +44,7 @@ function App() {
 					setIsLoggedIn={setIsLoggedIn}
 					authEmail={authEmail}
 					authPassword={authPassword}
+					setUserArtworks={setUserArtworks}
 				/>
 				<Routes>
 					<Route path="/" element={
@@ -55,6 +56,9 @@ function App() {
 							showMore={showMore}
 							resultNo={resultNo}
 							isLoggedIn={isLoggedIn}
+							userArtworks={userArtworks}
+							authEmail={authEmail}
+							setUserArtworks={setUserArtworks}
 						/>
 					}/>
 					<Route path="/register" element={
@@ -68,6 +72,7 @@ function App() {
 							setAuthEmail={setAuthEmail}
 							isLoggedIn={isLoggedIn}
 							setIsLoggedIn={setIsLoggedIn}
+							setUserArtworks={setUserArtworks}
 						/>
 					}/>
 					<Route path="/collection" element={

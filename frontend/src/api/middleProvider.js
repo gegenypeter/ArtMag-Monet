@@ -1,10 +1,11 @@
 import axios from 'axios';
+import { middleBaseURL } from './middleBaseURL';
 
 
 export const register = async (email, password) => {
 	let result = false;
     try {
-    	const res = await axios.post('http://localhost:4000/api/signup',
+    	const res = await axios.post(middleBaseURL.concat("/api/signup"),
 			{
 				email: email,
 				password: password
@@ -20,9 +21,9 @@ export const register = async (email, password) => {
 	}
 }
 
-export const logOut = async (email, password) => {
+export const logOut = async (email, password, setArtworks) => {
 	try {
-		await axios.delete('http://localhost:4000/api/login', {}, {
+		await axios.delete(middleBaseURL.concat("api/login"), {}, {
 			headers: {
 				authorization: email + ':::' + password
 			}
@@ -32,19 +33,21 @@ export const logOut = async (email, password) => {
 	}
 	finally{
 		localStorage.removeItem("sessionId")
+		setArtworks([]);
 	}
 }
 
-export const logIn = async (setEmail, email, password) => {
+export const logIn = async (setEmail, email, password, setArtworks) => {
 	let result = false;
     try {
-    	const response = await axios.post("http://localhost:4000/api/login", {}, {
+    	const response = await axios.post(middleBaseURL.concat("/api/login"), {}, {
         	headers: {
             	authorization: email + ":::" + password,
           	},
         });
         localStorage.setItem("sessionId", await response.data);
 		setEmail(email)
+		loadUserArtworks(email, setArtworks)
 		result = true;
     }
 	catch (err) {
@@ -52,4 +55,19 @@ export const logIn = async (setEmail, email, password) => {
     }
 	return result;
 };
-    
+
+export async function loadUserArtworks(email, setArtworks) {
+	let result = false;
+	try {
+		const response = await axios(middleBaseURL.concat("/api/collection"),
+			{
+				params: {email: email }
+			}
+		);
+		setArtworks(await response.data);
+		result = true;
+	}
+	finally {
+		return result;
+	}
+}

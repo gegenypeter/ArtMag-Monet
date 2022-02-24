@@ -35,3 +35,9 @@
 .save {
   width: 180px;
 }
+
+p.inMyCollection {
+  margin-top: 20px;
+  color: black;
+  text-decoration: bold;
+}

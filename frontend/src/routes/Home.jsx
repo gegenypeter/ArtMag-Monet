@@ -1,14 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ArtworkThumbnail from '../component/ArtworkThumbnail';
 import '../styles/Home.css';
 
 function Home(props) {
 	
-	const {artworkList, canLoadMore, searchExpr, setSearchExpr, showMore, resultNo, isLoggedIn} = props;
+	const {artworkList, canLoadMore, searchExpr, setSearchExpr, showMore, resultNo, isLoggedIn, userArtworks, setUserArtworks, authEmail} = props;
 
 	const [searchText, setSearchText] = useState(searchExpr);
 
-	
+	useEffect(() => {
+
+	}, [userArtworks])
+
 	return (<>
 		<div className='searchDiv'>
 			<h1 className="headerTitle">The Metropolitan Museum of Art Collection</h1>
@@ -39,9 +42,12 @@ function Home(props) {
 							artistName={artist}
 							image={image}
 							canBeSaved={isLoggedIn}
+							inMyCollection={userArtworks.map(({id: artId}) => artId).includes(id)}
+							authEmail={authEmail}
+							setUserArtworks={setUserArtworks}
 						/>
-						)
-						: <p>{artworkList}</p>
+					)
+					: <p>{artworkList}</p>
 				}
     		</div>
 		{canLoadMore && (<button className="showMore" onClick={showMore}>Show more artwork</button>)}
