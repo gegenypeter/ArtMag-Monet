@@ -1,0 +1,1 @@
+export const backendBaseURL = "http://34.159.141.214:8080/images";

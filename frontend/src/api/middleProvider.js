@@ -62,7 +62,7 @@ export const logOut = async (email, password, setArtworks) => {
 	}
 }
 
-export const logIn = async (setEmail, email, password, setArtworks) => {
+export const logIn = async (setEmail, email, password, setArtworks, setPassword) => {
 	let result = false;
     try {
     	const response = await axios.post(middleBaseURL.concat("/api/login"), {}, {
@@ -72,6 +72,7 @@ export const logIn = async (setEmail, email, password, setArtworks) => {
         });
         localStorage.setItem("sessionId", await response.data);
 		setEmail(email)
+		setPassword(password);
 		loadUserArtworks(email, setArtworks)
 		result = true;
     }
@@ -96,3 +97,23 @@ export async function loadUserArtworks(email, setArtworks) {
 		return result;
 	}
 }
+
+// export const deleteUserArtwork = async (artworkId, setArtworks, email, password) => {
+// 	try {
+// 		const response = await axios.delete(middleBaseURL.concat("api/delete"),
+// 			{
+// 				id: artworkId
+// 			},
+// 			{
+// 				headers: {
+// 					authorization: email + ':::' + password
+// 			}
+// 		})
+// 		console.log(await response.data)
+// 		await loadUserArtworks(email, setArtworks);
+// 	}
+// 	catch (err) {
+// 	}
+// 	finally{
+// 	}
+// }

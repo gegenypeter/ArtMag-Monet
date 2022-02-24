@@ -45,6 +45,7 @@ function Home(props) {
 							inMyCollection={userArtworks.map(({id: artId}) => artId).includes(id)}
 							authEmail={authEmail}
 							setUserArtworks={setUserArtworks}
+							place="all"
 						/>
 					)
 					: <p>{artworkList}</p>
