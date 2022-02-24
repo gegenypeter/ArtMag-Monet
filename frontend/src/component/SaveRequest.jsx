@@ -1,6 +1,6 @@
 import axios from "axios";
+import { middleBaseUrl } from "../api/middleBaseURL"
 
-const apiSaveURL = "http://localhost:4000/api/save"
 
 const saveArtwork = async ({data, props}) => {
  const {authEmail, authPassword} = props
@@ -14,7 +14,7 @@ const saveArtwork = async ({data, props}) => {
     image: data.image,
   };
   try {
-    await axios.post(apiSaveURL, newArt, {headers: {
+    await axios.post(middleBaseUrl.concat("/api/save"), newArt, {headers: {
       authorization:  authEmail + ':::' + authPassword
     }}
 );

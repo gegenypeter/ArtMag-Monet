@@ -5,12 +5,12 @@ import { logOut } from "../api/middleProvider";
 
 const Header = (props) => {
 
-    const {isLoggedIn, authEmail, authPassword, setIsLoggedIn} = props;
+    const {isLoggedIn, authEmail, authPassword, setIsLoggedIn, setUserArtworks} = props;
 
     const navigate = useNavigate();
 
     const logOutClick = () => {
-        logOut(authEmail, authPassword);
+        logOut(authEmail, authPassword, setUserArtworks);
         setIsLoggedIn(false);
         navigate("/");
     }

@@ -1,20 +1,11 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import "../styles/Collection.css";
 
 const Collection = (props) => {
-  const {authEmail, userArtworks, setUserArtworks} = props
-  async function load() {
-    console.log(authEmail);
-    const response = await axios(
-      `http://localhost:4000/api/collection`,{params: {email: authEmail }});
-      setUserArtworks(await response.data);
-    }
-    
-    useEffect(() => {
-      load();
-      console.log(userArtworks);
-  }, []);
+
+  const {userArtworks} = props
+
+  // A userArtworks betöltődik loginkor0
 
   return (
     <>

@@ -1,19 +1,18 @@
 import React from "react";
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useState } from "react";
+import { Navigate } from "react-router-dom";
 import { logIn } from "../api/middleProvider"
 
 
 const Login = (props) => {
 
-  const {setAuthEmail, isLoggedIn, setIsLoggedIn} = props;
+  const {setAuthEmail, isLoggedIn, setIsLoggedIn, setUserArtworks} = props;
 
   const [emailText, setEmailText] = useState("");
   const [passwordText, setPasswordText] = useState("");
 
 const logInClick = async () => {
-  await setIsLoggedIn(await logIn(setAuthEmail, emailText, passwordText))
+  await setIsLoggedIn(await logIn(setAuthEmail, emailText, passwordText, setUserArtworks))
 }
 
 return (
