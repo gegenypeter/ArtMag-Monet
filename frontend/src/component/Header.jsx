@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useNavigate, Navigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/Header.css";
 import { logOut } from "../api/middleProvider";
 

@@ -6,13 +6,13 @@ import { logIn } from "../api/middleProvider"
 
 const Login = (props) => {
 
-  const {setAuthEmail, isLoggedIn, setIsLoggedIn, setUserArtworks} = props;
+  const {setAuthEmail, isLoggedIn, setIsLoggedIn, setUserArtworks, setAuthPassword} = props;
 
   const [emailText, setEmailText] = useState("");
   const [passwordText, setPasswordText] = useState("");
 
 const logInClick = async () => {
-  await setIsLoggedIn(await logIn(setAuthEmail, emailText, passwordText, setUserArtworks))
+  await setIsLoggedIn(await logIn(setAuthEmail, emailText, passwordText, setUserArtworks, setAuthPassword))
 }
 
 return (
